@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            
+            <div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden">
+                <div class="card-body p-5 text-center">
+                    <div class="position-relative d-inline-block mb-4">
+                        <img src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}" 
+                             class="rounded-circle shadow-sm border border-4 border-white" 
+                             style="width: 150px; height: 150px; object-fit: cover;"
+                             alt="User Profile Picture">
+                    </div>
+                    
+                    <h2 class="fw-bold mb-1">{{ current_user.username }}</h2>
+                    <p class="text-muted mb-3">{{ current_user.email }}</p>
+                    
+                    <span class="badge bg-success-custom px-3 py-2 rounded-pill text-white">
+                        <i class="bi bi-person-check me-1"></i> {{ current_user.role | capitalize }} {{ _('Member') }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row g-3 mb-4 text-center">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-3 h-100 hover-shadow transition">
+                        <div class="text-success-custom fs-2 mb-1"><i class="bi bi-lightning-charge-fill"></i></div>
+                        <h3 class="fw-bold mb-0">{{ current_user.points }}</h3>
+                        <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.7rem;">{{ _('Available Points') }}</small>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-3 h-100 hover-shadow transition">
+                        {% set tier = current_user.get_tier_data() %}
+                        <div class="{{ tier.color }} fs-2 mb-1">
+                            <i class="bi {{ tier.icon }}"></i>
+                        </div>
+                        <h3 class="fw-bold mb-0 {{ tier.color }}">{{ tier.name }}</h3>
+                        <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.7rem;">{{ _('Membership Tier') }}</small>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 p-3 h-100 hover-shadow transition">
+                        <div class="text-primary fs-2 mb-1"><i class="bi bi-recycle"></i></div>
+                        <h3 class="fw-bold mb-0">{{ current_user.point_requests | length }}</h3> 
+                        <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.7rem;">{{ _('Total Actions') }}</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm rounded-4 mb-5">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="d-flex align-items-center mb-4">
+                        <h5 class="fw-bold mb-0">{{ _('Account Information') }}</h5>
+                    </div>
+                    
+                    <div class="list-group list-group-flush mb-4">
+                        <div class="list-group-item px-0 py-3 border-0 d-flex justify-content-between align-items-center">
+                            <span class="text-muted">{{ _('Username') }}</span>
+                            <span class="fw-bold text-dark">{{ current_user.username }}</span>
+                        </div>
+                        <hr class="m-0 text-light border-1">
+                        <div class="list-group-item px-0 py-3 border-0 d-flex justify-content-between align-items-center">
+                            <span class="text-muted">{{ _('Email Address') }}</span>
+                            <span class="fw-bold text-dark">{{ current_user.email }}</span>
+                        </div>
+                        <hr class="m-0 text-light border-1">
+                        <div class="list-group-item px-0 py-3 border-0 d-flex justify-content-between align-items-center">
+                            <span class="text-muted">{{ _('Account Status') }}</span>
+                            <span class="badge bg-light text-success border border-success px-3">{{ _('Active') }}</span>
+                        </div>
+                        <hr class="m-0 text-light border-1">
+                        <div class="list-group-item px-0 py-3 border-0 d-flex justify-content-between align-items-start">
+                            <span class="text-muted">{{ _('Delivery Address') }}</span>
+                            <span class="fw-bold text-dark text-end" style="max-width: 50%;">
+                                {% if current_user.address and current_user.address.strip() %}
+                                    {{ current_user.address }}
+                                {% else %}
+                                    <span class="text-muted fst-italic">{{ _('Not set') }}</span>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="d-grid mt-2">
+                        <a href="{{ url_for('main.edit_profile') }}" class="btn btn-edit-profile py-3 rounded-pill fw-bold shadow-sm transition text-decoration-none text-center">
+                            <i class="bi bi-pencil-square me-2"></i> {{ _('Update Account Settings') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .transition { transition: all 0.3s ease; }
+    
+    .hover-shadow:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.08) !important;
+    }
+
+    .btn-edit-profile {
+        background-color: #f8f9fa;
+        color: #2ecc71;
+        border: 2px solid #2ecc71;
+    }
+
+    .btn-edit-profile:hover {
+        background-color: #2ecc71;
+        color: white;
+        transform: scale(1.01);
+        box-shadow: 0 4px 12px rgba(46, 204, 113, 0.15) !important;
+    }
+
+    /* Custom Color Helpers */
+    .bg-success-custom { background-color: #2ecc71 !important; }
+    .text-success-custom { color: #2ecc71 !important; }
+    
+    /* Tier Colors (Match your Model) */
+    .text-info { color: #0dcaf0 !important; }      /* Platinum */
+    .text-warning { color: #ffc107 !important; }   /* Gold */
+    .text-secondary { color: #6c757d !important; } /* Silver */
+    .text-success { color: #198754 !important; }   /* Bronze */
+</style>
+{% endblock %}

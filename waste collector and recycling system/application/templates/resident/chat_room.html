@@ -1,0 +1,175 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-header bg-white border-0 py-3 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <a href="{{ url_for('main.live_chat') }}" class="text-muted me-3">
+                            <i class="bi bi-chevron-left fs-4"></i>
+                        </a>
+                        <div>
+                            <h5 class="fw-bold mb-0">{{ channel.name }}</h5>
+                            <small class="text-success"><i class="bi bi-circle-fill me-1" style="font-size: 8px;"></i> Online Support</small>
+                        </div>
+                    </div>
+                    <i class="bi bi-info-circle text-muted"></i>
+                </div>
+
+                <div class="card-body bg-light overflow-auto" style="height: 450px; display: flex; flex-direction: column;" id="messagesContainer">
+                    <div class="chat-container flex-grow-1 d-flex flex-column justify-content-end" id="chatMessages">
+                        
+                        <!-- Welcome Message -->
+                        {% if not messages %}
+                        <div class="d-flex mb-4">
+                            <div class="bg-white p-3 rounded-4 shadow-sm" style="max-width: 75%; border-bottom-left-radius: 0 !important;">
+                                <p class="mb-1">Hello! How can I help you with <strong>{{ channel.name }}</strong> today?</p>
+                                <small class="text-muted" style="font-size: 0.7rem;">Just now</small>
+                            </div>
+                        </div>
+                        {% else %}
+                        <!-- Display all messages -->
+                        {% for msg in messages %}
+                            {% if msg.user_id == current_user.id %}
+                            <!-- User's message (right aligned) -->
+                            <div class="d-flex mb-4 justify-content-end">
+                                <div class="bg-success-custom text-white p-3 rounded-4 shadow-sm" style="max-width: 75%; border-bottom-right-radius: 0 !important;">
+                                    <p class="mb-1">{{ msg.content }}</p>
+                                    <small class="opacity-75" style="font-size: 0.7rem;">{{ msg.date_posted.strftime('%I:%M %p') }}</small>
+                                </div>
+                            </div>
+                            {% else %}
+                            <!-- Admin/Support message (left aligned) -->
+                            <div class="d-flex mb-4">
+                                <div class="bg-white p-3 rounded-4 shadow-sm" style="max-width: 75%; border-bottom-left-radius: 0 !important;">
+                                    <p class="mb-1"><strong>{{ msg.sender.username }}</strong></p>
+                                    <p class="mb-1">{{ msg.content }}</p>
+                                    <small class="text-muted" style="font-size: 0.7rem;">{{ msg.date_posted.strftime('%I:%M %p') }}</small>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                <div class="card-footer bg-white border-0 p-3">
+                    <form id="messageForm" class="d-flex gap-2">
+                        <input type="text" id="messageInput" class="form-control border-0 bg-light rounded-pill px-4" placeholder="Type your message..." required>
+                        <button type="submit" class="btn bg-success-custom text-white rounded-circle">
+                            <i class="bi bi-send-fill"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Styling for the messages area */
+    .bg-success-custom { background-color: #2ecc71 !important; }
+    .card-body::-webkit-scrollbar { width: 5px; }
+    .card-body::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
+</style>
+
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+<script>
+    // Initialize Socket.IO connection
+    const socket = io();
+    const channelId = {{ channel.id }};
+    const currentUserId = {{ current_user.id }};
+    const currentUsername = '{{ current_user.username }}';
+    const currentUserRole = '{{ current_user.role }}';
+    
+    // Function to scroll to bottom of messages
+    function scrollToBottom() {
+        const container = document.getElementById('messagesContainer');
+        if (container) {
+            setTimeout(function() {
+                container.scrollTop = container.scrollHeight;
+            }, 0);
+        }
+    }
+    
+    // Scroll to bottom when page loads
+    window.addEventListener('load', scrollToBottom);
+    
+    // Join the chat room
+    socket.emit('join_chat', { channel_id: channelId });
+    
+    // Handle incoming messages
+    socket.on('new_message', function(data) {
+        // Check if message is visible to current user
+        let isVisible = false;
+        
+        if (currentUserRole === 'admin') {
+            // Admins see all messages
+            isVisible = true;
+        } else {
+            // Residents see their own messages and messages directed to them
+            if (data.sender_id === currentUserId || 
+                (data.is_admin && (data.recipient_id === currentUserId || data.recipient_id === null))) {
+                isVisible = true;
+            }
+        }
+        
+        if (!isVisible) return;
+        
+        const chatMessages = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'd-flex mb-4' + (data.sender_id === currentUserId ? ' justify-content-end' : '');
+        
+        if (data.sender_id === currentUserId) {
+            // User's message
+            messageDiv.innerHTML = `
+                <div class="bg-success-custom text-white p-3 rounded-4 shadow-sm" style="max-width: 75%; border-bottom-right-radius: 0 !important;">
+                    <p class="mb-1">${data.content}</p>
+                    <small class="opacity-75" style="font-size: 0.7rem;">${new Date(data.timestamp).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}</small>
+                </div>
+            `;
+        } else {
+            // Admin/Support message
+            messageDiv.innerHTML = `
+                <div class="bg-white p-3 rounded-4 shadow-sm" style="max-width: 75%; border-bottom-left-radius: 0 !important;">
+                    <p class="mb-1"><strong>${data.sender_username}</strong></p>
+                    <p class="mb-1">${data.content}</p>
+                    <small class="text-muted" style="font-size: 0.7rem;">${new Date(data.timestamp).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}</small>
+                </div>
+            `;
+        }
+        
+        chatMessages.appendChild(messageDiv);
+        scrollToBottom();
+    });
+    
+    // Handle user joined notification
+    socket.on('user_joined', function(data) {
+        console.log(data.username + ' joined the chat');
+    });
+    
+    // Handle form submission
+    document.getElementById('messageForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const messageInput = document.getElementById('messageInput');
+        const content = messageInput.value.trim();
+        
+        if (content) {
+            socket.emit('send_message', {
+                content: content,
+                channel_id: channelId,
+                recipient_id: null
+            });
+            messageInput.value = '';
+            messageInput.focus();
+        }
+    });
+    
+    // Clean up when leaving
+    window.addEventListener('beforeunload', function() {
+        socket.emit('leave_chat', { channel_id: channelId });
+    });
+</script>
+{% endblock %}

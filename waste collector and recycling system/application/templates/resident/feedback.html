@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">{{ _('Give Us Feedback') }}</h2>
+            <p class="text-muted">{{ _('We value your suggestions to make EcoClean better.') }}</p>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-3">
+            <div class="card-body p-4 p-lg-5">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="mb-4">
+                        {{ form.category.label(class="form-label fw-bold") }}
+                        {{ form.category(class="form-select border-0 bg-light p-3") }}
+                    </div>
+
+                    <div class="mb-4">
+                        {{ form.subject.label(class="form-label fw-bold") }}
+                        {{ form.subject(class="form-control border-0 bg-light p-3", placeholder=_("What is this about?")) }}
+                        {% for error in form.subject.errors %}
+                            <span class="text-danger small">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-4">
+                        {{ form.message.label(class="form-label fw-bold") }}
+                        {{ form.message(class="form-control border-0 bg-light p-3", rows="5", placeholder=_("Share your thoughts here...")) }}
+                        {% for error in form.message.errors %}
+                            <span class="text-danger small">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="d-grid">
+                        {{ form.submit(class="btn btn-dark btn-lg rounded-pill fw-bold py-3 shadow") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

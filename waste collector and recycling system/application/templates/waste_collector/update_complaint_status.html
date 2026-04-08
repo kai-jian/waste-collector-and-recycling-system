@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h3 class="fw-bold">{{ _('Your Assignments') }}</h3>
+            <p class="text-muted">{{ _('Click on a card to view full details and update the collection status.') }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        {% if tasks %}
+            {% for task in tasks %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <a href="{{ url_for('main.collector_complaint_detail', complaint_id=task.id) }}" class="text-decoration-none text-dark">
+                    <div class="card border-0 shadow-sm rounded-4 h-100 task-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <span class="badge {% if task.status == 'Pending' %}bg-warning text-dark{% elif task.status == 'In Action' %}bg-primary{% else %}bg-success{% endif %} rounded-pill px-3">
+                                    {{ task.status }}
+                                </span>
+                                <small class="text-muted fw-bold">#{{ task.id }}</small>
+                            </div>
+                            
+                            <h5 class="fw-bold mb-2">{{ task.waste_type }}</h5>
+                            
+                            <div class="mb-3">
+                                <p class="text-muted small mb-1">
+                                    <i class="bi bi-geo-alt-fill text-danger me-1"></i> {{ task.address }}
+                                </p>
+                                <p class="text-muted small">
+                                    <i class="bi bi-clock me-1"></i> {{ _('Reported:') }} {{ task.date_posted.strftime('%d %b') }}
+                                </p>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top">
+                                <span class="text-success-custom small fw-bold">{{ _('View Details') }}</span>
+                                <i class="bi bi-chevron-right text-muted"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12 text-center py-5">
+                <div class="bg-light d-inline-block p-4 rounded-circle mb-3">
+                    <i class="bi bi-clipboard-x text-muted" style="font-size: 3rem;"></i>
+                </div>
+                <h5>{{ _('No Assigned Complaints') }}</h5>
+                <p class="text-muted">{{ _('You are all caught up! Check back later for new tasks.') }}</p>
+                <a href="{{ url_for('main.home') }}" class="btn bg-success-custom text-white rounded-pill px-4">{{ _('Back to Dashboard') }}</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    .bg-success-custom { background-color: #2ecc71 !important; }
+    .text-success-custom { color: #2ecc71 !important; }
+    
+    .task-card { 
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+        border: 1px solid transparent !important;
+    }
+    
+    .task-card:hover { 
+        transform: translateY(-8px); 
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+        border-color: #2ecc71 !important;
+    }
+
+    /* Make the whole card feel like a button */
+    .task-card:active {
+        transform: translateY(-2px);
+    }
+</style>
+{% endblock %}

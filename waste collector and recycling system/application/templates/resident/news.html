@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    .text-success-custom { color: #2ecc71 !important; }
+    .bg-success-custom { background-color: #2ecc71 !important; color: white !important; }
+    .hover-lift { transition: transform 0.2s ease; }
+    .hover-lift:hover { transform: translateY(-3px); }
+</style>
+
+<div class="row mb-4 align-items-center">
+    <div class="col-md-8">
+        <h2 class="fw-bold"><i class="bi bi-newspaper text-success-custom me-2"></i>{{ _('Community News') }}</h2>
+        <p class="text-muted">{{ _('Latest updates and announcements from the EcoClean team.') }}</p>
+    </div>
+    {# Updated link to use the correct admin news route #}
+    {% if current_user.is_authenticated and current_user.role == 'admin' %}
+    <div class="col-md-4 text-md-end">
+        <a href="{{ url_for('main.news_action') }}" class="btn btn-dark shadow-sm rounded-pill px-4">
+            <i class="bi bi-plus-circle me-1"></i> {{ _('Post Update') }}
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<div class="row">
+    {% for news in news_list %}
+    <div class="col-md-12 mb-4">
+        <div class="card border-0 shadow-sm rounded-3 hover-lift">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="badge bg-success-custom px-3 py-2">{{ news.category }}</span>
+                    <small class="text-muted"><i class="bi bi-calendar-event me-1"></i> {{ news.date_posted.strftime('%B %d, %Y') }}</small>
+                </div>
+                <h3 class="card-title fw-bold mb-3">
+                    <a href="{{ url_for('main.news_detail', news_id=news.id) }}" class="text-decoration-none text-dark hover-success">
+                        {{ news.title }}
+                    </a>
+                </h3>
+                <p class="card-text text-secondary" style="line-height: 1.6;">
+                    {{ news.content | truncate(250) }}
+                </p>
+                
+                <div class="mt-3">
+                    <a href="{{ url_for('main.news_detail', news_id=news.id) }}" class="text-success-custom fw-semibold text-decoration-none">
+                        {{ _('Read Full Story') }} <i class="bi bi-arrow-right small"></i>
+                    </a>
+                </div>
+
+                <div class="mt-4 pt-3 border-top d-flex align-items-center">
+                    <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                        <i class="bi bi-person-badge"></i>
+                    </div>
+                    {# Note: Ensure your News model has an 'author' relationship to the User model #}
+                    <span class="small text-muted">{{ _('Posted by') }} <strong>{{ news.author.username if news.author else 'Admin' }}</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12 text-center py-5">
+        <div class="card border-0 shadow-sm p-5">
+            <i class="bi bi-info-circle text-muted display-4 mb-3"></i>
+            <p class="text-muted">{{ _('No news posts available at the moment.') }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .hover-success:hover { color: #2ecc71 !important; }
+</style>
+{% endblock %}

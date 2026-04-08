@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-0 text-dark">
+                <i class="bi bi-newspaper me-2 text-success"></i>{{ _('News Hub') }}
+            </h2>
+            <p class="text-muted mb-0">{{ _('Manage community announcements and alerts') }}</p>
+        </div>
+        <a href="{{ url_for('main.news_action') }}" class="btn btn-success rounded-pill px-4 shadow-sm fw-bold">
+            <i class="bi bi-plus-lg me-1"></i> {{ _('Add New Post') }}
+        </a>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-4" style="width: 15%;">{{ _('Posted Date') }}</th>
+                        <th style="width: 50%;">{{ _('Article Summary') }}</th>
+                        <th style="width: 15%;">{{ _('Category') }}</th>
+                        <th class="text-center" style="width: 20%;">{{ _('Actions') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in news %}
+                    <tr>
+                        <td class="ps-4">
+                            <div class="text-dark fw-semibold small">{{ post.date_posted.strftime('%d %b %Y') }}</div>
+                            <div class="text-muted x-small text-uppercase">{{ post.date_posted.strftime('%I:%M %p') }}</div>
+                        </td>
+
+                        <td>
+                            <div class="fw-bold text-dark mb-0">{{ post.title }}</div>
+                            <div class="text-muted small text-truncate" style="max-width: 450px;">
+                                {{ post.content }}
+                            </div>
+                        </td>
+
+                        <td>
+                            {% if post.category == 'Alert' %}
+                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3">
+                                    <i class="bi bi-exclamation-triangle-fill me-1"></i> {{ post.category }}
+                                </span>
+                            {% elif post.category == 'Event' %}
+                                <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3">
+                                    <i class="bi bi-calendar-event me-1"></i> {{ post.category }}
+                                </span>
+                            {% else %}
+                                <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle rounded-pill px-3">
+                                    <i class="bi bi-info-circle me-1"></i> {{ post.category }}
+                                </span>
+                            {% endif %}
+                        </td>
+
+                        <td class="text-center">
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="{{ url_for('main.news_action', id=post.id) }}" 
+                                   class="btn btn-sm btn-outline-primary rounded-pill px-3" 
+                                   title="Edit Post">
+                                    <i class="bi bi-pencil-square"></i> {{ _('Edit') }}
+                                </a>
+                                
+                                <a href="{{ url_for('main.delete_news', id=post.id) }}" 
+                                   class="btn btn-sm btn-outline-danger rounded-pill px-3" 
+                                   onclick="return confirm('{{ _('Permanent delete: are you sure?') }}')" 
+                                   title="Delete Post">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center py-5">
+                            <div class="opacity-50 mb-3">
+                                <i class="bi bi-journal-x" style="font-size: 3rem;"></i>
+                            </div>
+                            <h5 class="text-muted">No news articles found</h5>
+                            <p class="text-muted small">Start by clicking the "Add New Post" button above.</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .x-small { font-size: 0.75rem; }
+    .bg-danger-subtle { background-color: #f8d7da; }
+    .bg-primary-subtle { background-color: #cfe2ff; }
+    .bg-secondary-subtle { background-color: #e2e3e5; }
+    .table-hover tbody tr:hover { background-color: #f9fbfd; transition: 0.2s; }
+</style>
+{% endblock %}

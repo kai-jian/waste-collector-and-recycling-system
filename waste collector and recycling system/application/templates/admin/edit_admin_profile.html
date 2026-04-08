@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url_for('main.profile_admin') }}" class="text-success-custom text-decoration-none">Profile</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Settings</li>
+                </ol>
+            </nav>
+
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-md-4 bg-light border-end">
+                        <div class="card-body text-center p-5">
+                            <div class="position-relative d-inline-block mb-3">
+                                <img src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}" 
+                                     class="rounded-circle shadow" 
+                                     alt="Admin Avatar"
+                                     style="width: 150px; height: 150px; object-fit: cover; border: 5px solid white;">
+                                <span class="position-absolute bottom-0 end-0 bg-success-custom text-white rounded-circle p-2 shadow-sm">
+                                    <i class="bi bi-camera-fill"></i>
+                                </span>
+                            </div>
+                            <h5 class="fw-bold mb-1">{{ current_user.username }}</h5>
+                            <p class="text-muted small">System Administrator</p>
+                            
+                            <div class="mt-4">
+                                <p class="small text-muted mb-3">Upload a new photo to update your professional identity across the system.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="card-body p-5">
+                            <h4 class="fw-bold mb-4">Account Settings</h4>
+                            
+                            <form method="POST" action="" enctype="multipart/form-data">
+                                {{ form.hidden_tag() if form and form.hidden_tag }}
+
+                                <div class="row g-4">
+                                    <div class="col-12">
+                                        <label class="form-label small fw-bold text-uppercase text-muted">Administrative Username</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-white border-end-0"><i class="bi bi-person text-success-custom"></i></span>
+                                            <input type="text" name="username" class="form-control border-start-0 ps-0" value="{{ current_user.username }}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small fw-bold text-uppercase text-muted">Official Email Address</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-white border-end-0"><i class="bi bi-envelope text-success-custom"></i></span>
+                                            <input type="email" name="email" class="form-control border-start-0 ps-0" value="{{ current_user.email }}" required>
+                                        </div>
+                                        <div class="form-text mt-2 small text-muted">Note: This email is used for critical system notifications.</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label class="form-label small fw-bold text-uppercase text-muted">Change Profile Image</label>
+                                        <input class="form-control" type="file" id="picture" name="picture" accept="image/*">
+                                    </div>
+
+                                    <div class="col-12 mt-5">
+                                        <div class="d-flex gap-2">
+                                            <button type="submit" class="btn bg-success-custom text-white rounded-pill px-5 py-2 shadow-sm">
+                                                Save Changes
+                                            </button>
+                                            <a href="{{ url_for('main.profile_admin') }}" class="btn btn-outline-secondary rounded-pill px-4 py-2">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-5 p-4 border border-danger border-opacity-25 rounded-4 bg-danger bg-opacity-10">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-bold text-danger mb-1">Security & Privacy</h6>
+                        <p class="mb-0 small text-muted">Require a password reset or manage session security.</p>
+                    </div>
+                    <button class="btn btn-danger btn-sm rounded-pill px-3">Reset Password</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-success-custom { color: #2ecc71 !important; }
+    .bg-success-custom { background-color: #2ecc71 !important; }
+    .breadcrumb-item + .breadcrumb-item::before { content: "›"; font-size: 1.2rem; vertical-align: middle; }
+    .form-control:focus { border-color: #2ecc71; box-shadow: 0 0 0 0.25rem rgba(46, 204, 113, 0.25); }
+    .input-group-text { border-right: none; }
+</style>
+{% endblock %}

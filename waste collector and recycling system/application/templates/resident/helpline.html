@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-dark">{{ _('Support Center') }}</h1>
+        <p class="lead text-muted">{{ _('Choose a channel to get the help you need.') }}</p>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm text-center h-100 p-4">
+                <div class="mb-3"><i class="bi bi-telephone-fill text-success fs-1"></i></div>
+                <h5 class="fw-bold">{{ _('Hotline') }}</h5>
+                <p class="text-success fw-bold">{{ hotline }}</p> <small class="text-muted">{{ _('Available 9am - 5pm') }}</small>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm text-center h-100 p-4">
+                <div class="mb-3"><i class="bi bi-envelope-paper-fill text-primary fs-1"></i></div>
+                <h5 class="fw-bold">{{ _('Email') }}</h5>
+                <p class="text-primary small fw-bold">{{ support_email }}</p> <small class="text-muted">{{ _('Reply within 24h') }}</small>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm text-center h-100 p-4">
+                <div class="mb-3"><i class="bi bi-question-square-fill text-info fs-1"></i></div>
+                <h5 class="fw-bold">{{ _('FAQ') }}</h5>
+                <p class="text-muted small">{{ _('Common questions.') }}</p>
+                <a href="{{ url_for('main.faq') }}" class="btn btn-sm btn-info text-white rounded-pill mt-auto">{{ _('View FAQ') }}</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm text-center h-100 p-4">
+                <div class="mb-3"><i class="bi bi-chat-left-dots-fill text-warning fs-1"></i></div>
+                <h5 class="fw-bold">{{ _('Live Chat') }}</h5>
+                <p class="text-muted small">{{ _('Chat with us.') }}</p>
+                <a href="{{ url_for('main.live_chat') }}" class="btn btn-sm btn-warning text-white rounded-pill mt-auto">{{ _('Start Chat') }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

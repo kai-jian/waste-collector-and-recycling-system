@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h2 class="fw-bold text-dark">{{ _('Admin Dashboard') }}</h2>
+            <p class="text-muted">{{ _('Welcome back, ') }}<span class="text-success-custom fw-bold">{{ current_user.username }}</span>{{ _('. Here is the community overview.') }}</p>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm rounded-4 p-3 border-start border-4 border-primary hover-shadow h-100">
+                <div class="d-flex align-items-center">
+                    <div class="fs-1 text-primary me-3"><i class="bi bi-people"></i></div>
+                    <div>
+                        <h4 class="fw-bold mb-0">{{ total_users }}</h4>
+                        <small class="text-muted fw-semibold text-uppercase" style="font-size: 0.7rem;">{{ _('Residents') }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm rounded-4 p-3 border-start border-4 border-warning hover-shadow h-100">
+                <div class="d-flex align-items-center">
+                    <div class="fs-1 text-warning me-3"><i class="bi bi-exclamation-triangle"></i></div>
+                    <div>
+                        <h4 class="fw-bold mb-0">{{ pending_complaints }}</h4>
+                        <small class="text-muted fw-semibold text-uppercase" style="font-size: 0.7rem;">{{ _('Pending Dispatch') }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm rounded-4 p-3 border-start border-4 border-success hover-shadow h-100">
+                <div class="d-flex align-items-center">
+                    <div class="fs-1 text-success me-3"><i class="bi bi-chat-dots"></i></div>
+                    <div>
+                        <h4 class="fw-bold mb-0">{{ unresponded_messages }}</h4>
+                        <small class="text-muted fw-semibold text-uppercase" style="font-size: 0.7rem;">{{ _('Unresponded Messages') }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm rounded-4 p-3 border-start border-4 border-info hover-shadow h-100">
+                <div class="d-flex align-items-center">
+                    <div class="fs-1 text-info me-3"><i class="bi bi-check2-circle"></i></div>
+                    <div>
+                        <h4 class="fw-bold mb-0">{{ total_completed }}</h4>
+                        <small class="text-muted fw-semibold text-uppercase" style="font-size: 0.7rem;">{{ _('Resolved Cases') }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-4">{{ _('Management Tools') }}</h5>
+                    <div class="d-grid gap-3">
+                        <a href="{{ url_for('main.assign_hub') }}" class="btn btn-light text-start py-3 rounded-3 border">
+                            <i class="bi bi-truck me-2 text-primary"></i> {{ _('Dispatch Center') }}
+                        </a>
+                        <a href="{{ url_for('main.manage_feedback') }}" class="btn btn-light text-start py-3 rounded-3 border">
+                            <i class="bi bi-chat-square-heart me-2 text-info"></i> {{ _('Feedback Hub') }}
+                        </a>
+                        <a href="{{ url_for('main.manage_news') }}" class="btn btn-light text-start py-3 rounded-3 border">
+                            <i class="bi bi-megaphone me-2 text-danger"></i> {{ _('Manage News Hub') }}
+                        </a>
+                        <a href="{{ url_for('main.manage_chat') }}" class="btn btn-light text-start py-3 rounded-3 border">
+                            <i class="bi bi-chat-dots me-2 text-success"></i> {{ _('Chat Channels') }}
+                        </a>
+                        <a href="{{ url_for('main.manage_users') }}" class="btn btn-light text-start py-3 rounded-3 border">
+                            <i class="bi bi-person-gear me-2 text-secondary"></i> {{ _('User Database') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold mb-0">{{ _('Recent Urgent Reports') }}</h5>
+                        <a href="{{ url_for('main.assign_hub') }}" class="btn btn-sm btn-link text-decoration-none text-success-custom">{{ _('View All Activity') }}</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>{{ _('Resident') }}</th>
+                                    <th>{{ _('Type') }}</th>
+                                    <th>{{ _('Status') }}</th>
+                                    <th class="text-center">{{ _('Action') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for complaint in recent_complaints %}
+                                <tr>
+                                    <td>
+                                        <div class="fw-bold text-dark">{{ complaint.author.username if complaint.author else 'Unknown User' }}</div>
+                                        <small class="text-muted">{{ complaint.date_posted.strftime('%d %b') }}</small>
+                                    </td>
+                                    <td><span class="badge bg-light text-dark border rounded-pill px-3">{{ complaint.type }}</span></td>
+                                    <td>
+                                        {% if complaint.status == 'Pending' %}
+                                            <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill">● Pending</span>
+                                        {% elif complaint.status == 'In Action' %}
+                                            <span class="badge bg-info-subtle text-info border border-info-subtle rounded-pill">● In Action</span>
+                                        {% else %}
+                                            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill">● {{ complaint.status }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{ url_for('main.manage_complaints', complaint_id=complaint.id) }}" class="btn btn-sm btn-success-custom text-white rounded-pill px-3 shadow-sm">
+                                            Dispatch
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted py-5">
+                                        <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+                                        No new complaints reported recently.
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-warning-subtle { background-color: #fff3cd; }
+    .bg-success-subtle { background-color: #d1e7dd; }
+    .bg-info-subtle { background-color: #cff4fc; }
+    .text-success-custom { color: #2ecc71; }
+    .btn-success-custom { background-color: #2ecc71; border: none; }
+    .btn-success-custom:hover { background-color: #27ae60; color: white; }
+
+    .btn-light:hover { 
+        background-color: #ffffff; 
+        border-color: #2ecc71 !important; 
+        color: #2ecc71 !important; 
+        transform: translateX(5px);
+        transition: 0.3s;
+    }
+    .card { transition: all 0.3s ease; }
+    .hover-shadow:hover { transform: translateY(-5px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; }
+</style>
+{% endblock %}

@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
+                
+                <div class="text-center mb-4">
+                    <div class="bg-light d-inline-block p-3 rounded-circle mb-3">
+                        {% if current_user.role == 'admin' %}
+                            <i class="bi bi-shield-lock text-success-custom" style="font-size: 2rem;"></i>
+                        {% else %}
+                            <i class="bi bi-person-gear text-success-custom" style="font-size: 2rem;"></i>
+                        {% endif %}
+                    </div>
+                    <h3 class="fw-bold">
+                        {{ _('Edit') }} {{ current_user.role | capitalize }} {{ _('Profile') }}
+                    </h3>
+                    <p class="text-muted small">{{ _('Update your account credentials below') }}</p>
+                </div>
+
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted text-uppercase">{{ _('Username') }}</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i class="bi bi-person"></i></span>
+                            {{ form.username(class="form-control border-start-0 py-2", placeholder=_('Username')) }}
+                        </div>
+                        {% if form.username.errors %}
+                            {% for error in form.username.errors %}
+                                <span class="text-danger small">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted text-uppercase">{{ _('Email Address') }}</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope"></i></span>
+                            {{ form.email(class="form-control border-start-0 py-2", placeholder=_('Email')) }}
+                        </div>
+                        {% if form.email.errors %}
+                            {% for error in form.email.errors %}
+                                <span class="text-danger small">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted text-uppercase">{{ _('Delivery Address') }}</label>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text bg-light border-end-0"><i class="bi bi-geo-alt"></i></span>
+                            {{ form.address(class="form-control border-start-0 py-2", id="addressInput") }}
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-success mb-2" id="geoLocationBtn" onclick="getLocation();">
+                            <i class="bi bi-crosshair"></i> {{ _('Use My Location') }}
+                        </button>
+                        <small class="form-text text-muted d-block">{{ _('This address will be used for reward delivery. Or click above to auto-detect your current location.') }}</small>
+                        <div id="geoMessage" class="mt-2"></div>
+                        {% if form.address.errors %}
+                            {% for error in form.address.errors %}
+                                <span class="text-danger small">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn bg-success-custom text-white rounded-pill py-2 fw-bold shadow-sm">
+                            {{ _('Update Profile') }}
+                        </button>
+                        
+                        <a href="{{ back_url }}" class="btn btn-link text-muted text-decoration-none small">
+                            {{ _('Cancel and Return to Profile') }}
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-success-custom { background-color: #2ecc71 !important; }
+    .text-success-custom { color: #2ecc71 !important; }
+    .input-group-text { color: #6c757d; border-color: #dee2e6; }
+    .form-control { border-color: #dee2e6; }
+    .form-control:focus { border-color: #2ecc71; box-shadow: 0 0 0 0.25rem rgba(46, 204, 113, 0.1); }
+</style>
+
+<script>
+    function getLocation() {
+        const btn = document.getElementById('geoLocationBtn');
+        const msgDiv = document.getElementById('geoMessage');
+        
+        // Disable button and show loading
+        btn.disabled = true;
+        btn.innerHTML = '<i class="bi bi-hourglass-split me-1"></i> Detecting location...';
+        msgDiv.innerHTML = '';
+        
+        if (!navigator.geolocation) {
+            msgDiv.innerHTML = '<div class="alert alert-danger alert-sm mb-0">Geolocation is not supported by your browser.</div>';
+            btn.disabled = false;
+            btn.innerHTML = '<i class="bi bi-crosshair"></i> Use My Location';
+            return;
+        }
+        
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                
+                // Use OpenStreetMap's Nominatim service for reverse geocoding
+                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.address) {
+                            // Build a readable address
+                            const addressParts = [];
+                            if (data.address.house_number) addressParts.push(data.address.house_number);
+                            if (data.address.road) addressParts.push(data.address.road);
+                            if (data.address.suburb) addressParts.push(data.address.suburb);
+                            if (data.address.city) addressParts.push(data.address.city);
+                            if (data.address.postcode) addressParts.push(data.address.postcode);
+                            if (data.address.country) addressParts.push(data.address.country);
+                            
+                            const fullAddress = addressParts.join(', ');
+                            document.getElementById('addressInput').value = fullAddress;
+                            
+                            msgDiv.innerHTML = '<div class="alert alert-success alert-sm mb-0"><i class="bi bi-check-circle"></i> Location detected! Address has been filled in.</div>';
+                        }
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="bi bi-crosshair"></i> Use My Location';
+                    })
+                    .catch(error => {
+                        msgDiv.innerHTML = '<div class="alert alert-warning alert-sm mb-0">Could not retrieve address from coordinates. Please try again or enter manually.</div>';
+                        console.error('Geocoding error:', error);
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="bi bi-crosshair"></i> Use My Location';
+                    });
+            },
+            (error) => {
+                let errorMsg = 'Unable to detect location.';
+                if (error.code === error.PERMISSION_DENIED) {
+                    errorMsg = 'Location permission denied. Please enable it in your browser settings.';
+                } else if (error.code === error.POSITION_UNAVAILABLE) {
+                    errorMsg = 'Location information unavailable.';
+                } else if (error.code === error.TIMEOUT) {
+                    errorMsg = 'Location request timed out.';
+                }
+                msgDiv.innerHTML = `<div class="alert alert-danger alert-sm mb-0">${errorMsg}</div>`;
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-crosshair"></i> Use My Location';
+            }
+        );
+    }
+</script>
+{% endblock %}

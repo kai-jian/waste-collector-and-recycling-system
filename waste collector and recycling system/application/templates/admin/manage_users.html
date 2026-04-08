@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">{{ _('User Database') }}</h2>
+        <span class="badge bg-primary rounded-pill">{{ users|length }} {{ _('Residents') }}</span>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-4">{{ _('User') }}</th>
+                        <th>{{ _('Email') }}</th>
+                        <th>{{ _('Points') }}</th>
+                        <th>{{ _('Tier') }}</th>
+                        <th class="text-center">{{ _('Role') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td class="ps-4">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}" 
+                                     class="rounded-circle me-3" style="width: 40px; height: 40px; object-fit: cover;">
+                                <span class="fw-bold">{{ user.username }}</span>
+                            </div>
+                        </td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <span class="badge bg-light text-dark border">{{ user.points }} {{ _('pts') }}</span>
+                        </td>
+                        <td>
+                            {% set tier = user.get_tier_data() %}
+                            <span class="{{ tier.color }} small fw-bold">
+                                <i class="bi {{ tier.icon }}"></i> {{ tier.name }}
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <span class="text-muted small text-uppercase">{{ user.role }}</span>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center py-5 text-muted">{{ _('No residents registered yet.') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+        
+        <div class="mb-4">
+            <h2 class="fw-bold"><i class="bi bi-megaphone text-success-custom me-2"></i>{{ _('Report Waste') }}</h2>
+            <p class="text-muted">{{ _('Please provide details and confirm the location for collection.') }}</p>
+        </div>
+        
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4 p-md-5">
+                <form method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+
+                    <div class="mb-4">
+                        {{ form.type.label(class="form-label fw-bold") }}
+                        {{ form.type(class="form-select border-0 bg-light p-3") }}
+                    </div>
+
+                    <div class="mb-4">
+                        {{ form.content.label(class="form-label fw-bold") }}
+                        {{ form.content(class="form-control border-0 bg-light p-3", rows="5", style="resize: none;", placeholder="Describe the situation...") }}
+                    </div>
+
+                    <div class="mb-4">
+                        {{ form.photo.label(class="form-label fw-bold") }}
+                        {{ form.photo(class="form-control border-0 bg-light p-2") }}
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label class="form-label fw-bold mb-0">{{ _('Confirm Location') }}</label>
+                            <button type="button" onclick="getLocation()" class="btn btn-sm btn-success-custom rounded-pill px-3">
+                                <i class="bi bi-geo-fill me-1"></i> {{ _('Get My Location') }}
+                            </button>
+                        </div>
+                        
+                        <div id="map" style="height: 350px; border-radius: 12px;" class="mb-2 shadow-sm border"></div>
+                        
+                        {{ form.latitude(id="latitude") }}
+                        {{ form.longitude(id="longitude") }}
+                        
+                        <small class="text-muted"><i class="bi bi-info-circle me-1"></i> {{ _('You can drag the pin to adjust the exact spot.') }}</small>
+                    </div>
+
+                    <hr class="my-5 opacity-25">
+
+                    <div class="d-grid gap-3">
+                        {{ form.submit(class="btn btn-dark btn-lg rounded-pill fw-bold py-3 shadow-sm") }}
+                        
+                        <a href="{{ url_for('main.complaint_hub') }}" class="btn btn-outline-secondary btn-lg rounded-pill fw-bold py-3">
+                            {{ _('Cancel & Go Back') }}
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    // Initialize map at a default location
+    var map = L.map('map').setView([3.1390, 101.6869], 13); 
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    // Create a draggable marker
+    var marker = L.marker([3.1390, 101.6869], {
+        draggable: true
+    }).addTo(map);
+
+    // Function to update hidden inputs when marker moves
+    function updateCoords(lat, lng) {
+        document.getElementById('latitude').value = lat.toFixed(6);
+        document.getElementById('longitude').value = lng.toFixed(6);
+    }
+
+    // Update coords when drag ends
+    marker.on('dragend', function (e) {
+        var coords = marker.getLatLng();
+        updateCoords(coords.lat, coords.lng);
+    });
+
+    // Auto-location function
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                
+                var newLatLng = new L.LatLng(lat, lng);
+                marker.setLatLng(newLatLng);
+                map.setView(newLatLng, 16); // Zoom in closer
+                updateCoords(lat, lng);
+            }, function() {
+                alert("{{ _('Could not get your location. Please pin it manually.') }}");
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    // Initial update
+    updateCoords(3.1390, 101.6869);
+</script>
+
+<style>
+    #latitude, #longitude { display: none; }
+    .btn-success-custom { background-color: #2ecc71; color: white; border: none; }
+    .btn-success-custom:hover { background-color: #27ae60; color: white; }
+</style>
+{% endblock %}

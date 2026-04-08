@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="bg-success-custom p-4 text-white">
+                    <a href="{{ url_for('main.faq') }}" class="text-white text-decoration-none small mb-2 d-inline-block">
+                        <i class="bi bi-arrow-left"></i> {{ _('Back to List') }}
+                    </a>
+                    <h2 class="fw-bold mb-0">{{ faq.question }}</h2>
+                </div>
+                <div class="card-body p-5">
+                    <div class="faq-content text-secondary lh-lg" style="font-size: 1.1rem;">
+                        {{ faq.answer }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

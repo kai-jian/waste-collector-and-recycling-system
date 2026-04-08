@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 col-lg-5">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('main.home') }}" class="text-success-custom text-decoration-none">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Edit {{ 'Hotline' if setting.key == 'hotline' else 'Support Email' }}
+                </li>
+            </ol>
+        </nav>
+
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-0 pt-4 px-4 text-center">
+                <div class="bg-success-light p-3 rounded-circle d-inline-block mb-3" style="background-color: #e8f8f0;">
+                    {# Dynamic Icon based on Key #}
+                    {% if setting.key == 'hotline' %}
+                        <i class="bi bi-telephone-fill text-success-custom fs-3"></i>
+                    {% else %}
+                        <i class="bi bi-envelope-fill text-success-custom fs-3"></i>
+                    {% endif %}
+                </div>
+                
+                <h4 class="fw-bold">Update {{ setting.key.replace('_', ' ').capitalize() }}</h4>
+                <p class="text-muted small">This update will be visible to residents immediately.</p>
+            </div>
+
+            <div class="card-body p-4">
+                <form method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+                    <div class="mb-4">
+                        <label for="value" class="form-label fw-600 text-muted small text-uppercase">
+                            New {{ 'Phone Number' if setting.key == 'hotline' else 'Email Address' }}
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0">
+                                <i class="bi bi-pencil-square text-success-custom"></i>
+                            </span>
+                            <input type="text" 
+                                   id="value" 
+                                   name="value" 
+                                   class="form-control form-control-lg border-start-0 ps-1" 
+                                   value="{{ setting.value }}" 
+                                   required 
+                                   autofocus>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn bg-success-custom btn-lg rounded-3 py-3 fw-bold">
+                            Save Changes
+                        </button>
+                        <a href="{{ url_for('main.home') }}" class="btn btn-light btn-lg rounded-3 text-muted">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-4 p-3 bg-white rounded-4 shadow-sm border-start border-success border-4">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-info-circle me-3 fs-4 text-success-custom"></i>
+                <div class="small">
+                    <span class="text-muted d-block">Current Live {{ setting.key.capitalize() }}:</span>
+                    <strong class="text-dark">{{ setting.value }}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

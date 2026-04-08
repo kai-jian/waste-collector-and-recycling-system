@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+                <div class="bg-dark p-5 text-center position-relative" style="height: 160px;">
+                    <div class="position-absolute top-100 start-50 translate-middle">
+                        <div class="bg-white p-1 rounded-circle shadow-sm">
+                            <img src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}" 
+                                 class="rounded-circle" 
+                                 alt="Admin Profile"
+                                 style="width: 120px; height: 120px; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-5 mt-4 text-center">
+                    <h2 class="fw-bold mb-1">{{ current_user.username }}</h2>
+                    <span class="badge bg-soft-success text-success-custom rounded-pill px-3 py-2 border">
+                        <i class="bi bi-patch-check-fill me-1"></i> Master Administrator
+                    </span>
+                    <p class="text-muted mt-3">Managing city-wide sustainability since {{ joined_date }}</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-7">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                        <h5 class="fw-bold mb-4">Administrative Details</h5>
+                        <div class="mb-4">
+                            <label class="text-muted small text-uppercase fw-bold d-block">Official Email</label>
+                            <span class="fs-5">{{ current_user.email }}</span>
+                        </div>
+                        <div class="mb-4">
+                            <label class="text-muted small text-uppercase fw-bold d-block">Access Level</label>
+                            <span class="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25">Superuser</span>
+                        </div>
+                        <div class="pt-3 border-top">
+                            <a href="{{ url_for('main.edit_profile') }}" class="btn bg-success-custom text-white rounded-pill px-4 shadow-sm">
+                                <i class="bi bi-pencil-square me-2"></i>Edit Credentials
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-dark text-white">
+                        <h5 class="fw-bold mb-4 text-success-custom">System Impact</h5>
+                        <div class="text-center py-3">
+                            <div class="display-4 fw-bold text-success-custom">{{ completed_count }}</div>
+                            <p class="mb-0 opacity-75 text-uppercase small">Complaints Completed</p>
+                        </div>
+                        <hr class="my-4 opacity-25">
+                        <div class="d-flex justify-content-between align-items-center small">
+                            <span>Data Reliability:</span>
+                            <span class="text-success-custom fw-bold">
+                                <i class="bi bi-check-all me-1"></i> Live Tracking
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-soft-success { background-color: rgba(46, 204, 113, 0.1); }
+    .text-success-custom { color: #2ecc71 !important; }
+    .bg-success-custom { background-color: #2ecc71 !important; }
+    .card { transition: transform 0.2s ease; }
+</style>
+{% endblock %}

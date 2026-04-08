@@ -1,0 +1,1411 @@
+# Malay translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-02-05 18:28+0800\n"
+"PO-Revision-Date: 2026-02-05 17:08+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ms\n"
+"Language-Team: ms <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: application/templates/admin/home_admin.html:7
+msgid ". Here is the community overview."
+msgstr ". Berikut adalah gambaran keseluruhan komuniti."
+
+#: application/templates/admin/dashboard_summary.html:104
+msgid ""
+". Verified entries automatically update the volume and sustainability "
+"metrics."
+msgstr ""
+". Entri yang disahkan secara automatik mengemas kini metrik volum dan "
+"keberlanjutan."
+
+#: application/templates/waste_collector/profile_waste_collector.html:40
+msgid "Access Level"
+msgstr "Tahap Akses"
+
+#: application/templates/login.html:10
+msgid "Access your waste management dashboard"
+msgstr "Akses papan pemuka pengurusan sampah anda"
+
+#: application/templates/waste_collector/profile_waste_collector.html:33
+msgid "Account Details"
+msgstr "Butiran Akaun"
+
+#: application/templates/resident/profile_resident.html:57
+msgid "Account Information"
+msgstr ""
+
+#: application/templates/resident/profile_resident.html:72
+#, fuzzy
+msgid "Account Status"
+msgstr "Kemas Kini Status"
+
+#: application/templates/admin/assign_hub.html:14
+#: application/templates/admin/home_admin.html:98
+#: application/templates/waste_collector/home_collector.html:62
+msgid "Action"
+msgstr "Tindakan"
+
+#: application/templates/admin/manage_chat.html:25
+#: application/templates/admin/manage_news.html:24
+#, fuzzy
+msgid "Actions"
+msgstr "Tindakan"
+
+#: application/templates/admin/manage_chat.html:35
+#: application/templates/resident/profile_resident.html:73
+#, fuzzy
+msgid "Active"
+msgstr "Aktif"
+
+#: application/templates/waste_collector/home_collector.html:29
+msgid "Active Pickups"
+msgstr "Pengambilan Aktif"
+
+#: application/templates/resident/terminology.html:29
+msgid ""
+"Activities carried out to keep public areas like streets, parks, and "
+"markets clean, hygienic, and well-maintained."
+msgstr ""
+
+#: application/templates/admin/manage_faq.html:58
+msgid "Add First FAQ"
+msgstr "Tambah Soalan Lazim Pertama"
+
+#: application/templates/admin/manage_faq.html:18
+#, fuzzy
+msgid "Add New FAQ"
+msgstr "Tambah Soalan Lazim Baru"
+
+#: application/templates/admin/manage_news.html:12
+#, fuzzy
+msgid "Add New Post"
+msgstr "Tambah Siaran Baru"
+
+#: application/templates/admin/dashboard_summary.html:7
+#: application/templates/admin/home_admin.html:6
+#, fuzzy
+msgid "Admin Dashboard"
+msgstr "Papan Pemuka Admin"
+
+#: application/templates/layout.html:124
+msgid "Admin Profile"
+msgstr "Profil Admin"
+
+#: application/templates/admin/dashboard_summary.html:102
+msgid "Administrative Control Center"
+msgstr "Pusat Kawalan Pentadbiran"
+
+#: application/templates/sign_up.html:87
+msgid "Already have an account?"
+msgstr "Sudah mempunyai akaun?"
+
+#: application/templates/admin/dashboard_summary.html:62
+msgid "Analyze Reward Impact"
+msgstr "Analisis Kesan Ganjaran"
+
+#: application/templates/admin/verify_points.html:23
+msgid "Approve"
+msgstr "Setuju"
+
+#: application/templates/admin/manage_faq.html:43
+msgid "Are you sure you want to delete this FAQ?"
+msgstr "Anda pasti mahu mempadam Soalan Lazim ini?"
+
+#: application/templates/resident/redeem_points.html:40
+msgid "Are you sure you want to redeem"
+msgstr ""
+
+#: application/templates/admin/manage_news.html:22
+msgid "Article Summary"
+msgstr "Ringkasan Artikel"
+
+#: application/templates/admin/manage_complaints.html:26
+#: application/templates/layout.html:71
+msgid "Assign Hub"
+msgstr "Tetapkan Hab"
+
+#: application/templates/change_language.html:20
+#: application/templates/change_language.html:32
+#: application/templates/change_language.html:44
+#: application/templates/resident/rewards.html:14
+msgid "Available"
+msgstr "Tersedia"
+
+#: application/templates/resident/helpline.html:14
+#, fuzzy
+msgid "Available 9am - 5pm"
+msgstr "Tersedia"
+
+#: application/templates/resident/profile_resident.html:30
+#, fuzzy
+msgid "Available Points"
+msgstr "Poin Tersedia"
+
+#: application/templates/waste_collector/update_complaint_status.html:53
+#, fuzzy
+msgid "Back to Dashboard"
+msgstr "Kembali ke Papan Pemuka"
+
+#: application/templates/resident/faq.html:7
+#: application/templates/resident/live_chat.html:7
+#, fuzzy
+msgid "Back to Helpline"
+msgstr "Talian Bantuan"
+
+#: application/templates/change_language.html:52
+#: application/templates/resident/view_status.html:60
+msgid "Back to Hub"
+msgstr "Kembali ke Hub"
+
+#: application/templates/resident/faq_detail.html:9
+#, fuzzy
+msgid "Back to List"
+msgstr "Kembali ke Hub"
+
+#: application/templates/resident/news_detail.html:42
+msgid "Back to News Feed"
+msgstr ""
+
+#: application/templates/resident/redeem_points.html:7
+#, fuzzy
+msgid "Back to Rewards Hub"
+msgstr "Kembali ke Hub"
+
+#: application/templates/waste_collector/collector_complaint_detail.html:8
+#, fuzzy
+msgid "Back to Tasks"
+msgstr "Kembali ke Tugasan"
+
+#: application/templates/resident/terminology.html:38
+msgid "Bulk Waste"
+msgstr ""
+
+#: application/templates/resident/news_detail.html:32
+msgid "By"
+msgstr ""
+
+#: application/templates/waste_collector/collector_complaint_detail.html:63
+msgid "COLLECTION EVIDENCE (PHOTO)"
+msgstr "BUKTI PENGUMPULAN (FOTO)"
+
+#: application/templates/waste_collector/collector_complaint_detail.html:43
+#, fuzzy
+msgid "CURRENT STATUS"
+msgstr "STATUS SEMASA"
+
+#: application/templates/resident/request_points.html:43
+msgid "Cancel"
+msgstr "Batal"
+
+#: application/templates/resident/make_complaint.html:53
+msgid "Cancel & Go Back"
+msgstr ""
+
+#: application/templates/resident/edit_profile.html:58
+msgid "Cancel and Return to Profile"
+msgstr ""
+
+#: application/templates/admin/manage_news.html:23
+#: application/templates/resident/home_resident.html:63
+msgid "Category"
+msgstr "Kategori"
+
+#: application/templates/admin/manage_chat.html:22
+msgid "Channel Name"
+msgstr "Nama Saluran"
+
+#: application/templates/admin/home_admin.html:77
+#: application/templates/admin/manage_chat.html:7
+#, fuzzy
+msgid "Chat Channels"
+msgstr "Saluran Sembang"
+
+#: application/templates/resident/helpline.html:39
+msgid "Chat with us."
+msgstr ""
+
+#: application/templates/resident/complaint.html:48
+msgid "Check Complaint Status"
+msgstr "Semak Status Aduan"
+
+#: application/templates/resident/helpline.html:6
+msgid "Choose a channel to get the help you need."
+msgstr ""
+
+#: application/templates/resident/redeem_points.html:10
+msgid "Choose a reward and we will process your request immediately."
+msgstr ""
+
+#: application/templates/waste_collector/update_complaint_status.html:8
+msgid "Click on a card to view full details and update the collection status."
+msgstr ""
+"Klik pada kad untuk melihat butiran lengkap dan kemas kini status "
+"pengumpulan."
+
+#: application/templates/waste_collector/home_collector.html:7
+#, fuzzy
+msgid "Collector Dashboard"
+msgstr "Papan Pemuka Pengumpul"
+
+#: application/templates/admin/dashboard_summary.html:104
+#, fuzzy
+msgid "Collector Reports"
+msgstr "Laporan Pengumpul"
+
+#: application/templates/resident/helpline.html:30
+#, fuzzy
+msgid "Common questions."
+msgstr "Soalan umum."
+
+#: application/templates/resident/home_resident.html:105
+#: application/templates/resident/news.html:13
+msgid "Community News"
+msgstr "Berita Komuniti"
+
+#: application/templates/resident/complaint.html:20
+msgid "Complaint Terminology"
+msgstr "Istilah Aduan"
+
+#: application/templates/resident/terminology.html:9
+msgid "Complaint Terminology Guide"
+msgstr "Panduan Istilah Aduan"
+
+#: application/templates/resident/view_status.html:40
+#, fuzzy
+msgid "Completed"
+msgstr "Selesai"
+
+#: application/templates/waste_collector/collector_complaint_detail.html:48
+msgid "Completed (Work Finished)"
+msgstr "Selesai (Kerja Selesai)"
+
+#: application/form.py:60
+#, fuzzy
+msgid "Compliment"
+msgstr "Pujian"
+
+#: application/templates/resident/make_complaint.html:33
+msgid "Confirm Location"
+msgstr ""
+
+#: application/templates/admin/manage_helpline.html:8
+msgid "Control all support channels, contact information, and resident resources."
+msgstr "Kawal semua saluran sokongan, maklumat hubungan, dan sumber pemastautin."
+
+#: application/templates/resident/make_complaint.html:99
+msgid "Could not get your location. Please pin it manually."
+msgstr ""
+
+#: application/templates/sign_up.html:82
+msgid "Create Account"
+msgstr "Buat Akaun"
+
+#: application/templates/admin/manage_faq.html:14
+msgid "Create, update, or remove help articles for residents."
+msgstr "Buat, kemas kini, atau buang artikel bantuan untuk pemastautin."
+
+#: application/templates/change_language.html:18
+#: application/templates/change_language.html:30
+#: application/templates/change_language.html:42
+msgid "Current"
+msgstr "Semasa"
+
+#: application/templates/waste_collector/home_collector.html:53
+#, fuzzy
+msgid "Current Assignments"
+msgstr "Tugasan Semasa"
+
+#: application/templates/admin/manage_faq.html:9
+#: application/templates/layout.html:66
+msgid "Dashboard"
+msgstr "Papan Pemuka"
+
+#: application/templates/resident/home_resident.html:65
+#: application/templates/resident/rewards.html:60
+msgid "Date"
+msgstr "Tarikh"
+
+#: application/templates/admin/assign_hub.html:13
+#: application/templates/resident/view_status.html:18
+msgid "Date Reported"
+msgstr "Tarikh Dilaporkan"
+
+#: application/templates/admin/manage_faq.html:44
+#, fuzzy
+msgid "Delete"
+msgstr "Padam"
+
+#: application/templates/admin/manage_chat.html:49
+msgid "Delete this channel?"
+msgstr "Padam saluran ini?"
+
+#: application/templates/admin/manage_chat.html:23
+msgid "Description"
+msgstr "Penerangan"
+
+#: application/templates/admin/dashboard_summary.html:107
+msgid "Detailed Analytics"
+msgstr "Analitik Terperinci"
+
+#: application/templates/resident/news_detail.html:15
+#: application/templates/waste_collector/home_collector.html:85
+#, fuzzy
+msgid "Details"
+msgstr "Butiran"
+
+#: application/templates/admin/home_admin.html:65
+#: application/templates/admin/manage_complaints.html:27
+msgid "Dispatch Center"
+msgstr "Pusat Penghantaran"
+
+#: application/templates/resident/terminology.html:18
+msgid "Domestic"
+msgstr ""
+
+#: application/templates/resident/request_points.html:7
+#, fuzzy
+msgid "Earn Points"
+msgstr "Sahkan Poin"
+
+#: application/templates/admin/manage_faq.html:37
+#: application/templates/admin/manage_news.html:63
+#: application/templates/resident/edit_profile.html:18
+msgid "Edit"
+msgstr "Edit"
+
+#: application/templates/admin/manage_helpline.html:31
+msgid "Edit Email"
+msgstr "Edit E-mel"
+
+#: application/templates/admin/manage_helpline.html:20
+msgid "Edit Hotline"
+msgstr "Edit Talian Panas"
+
+#: application/templates/waste_collector/profile_waste_collector.html:51
+#, fuzzy
+msgid "Edit Profile"
+msgstr "Edit Profil"
+
+#: application/templates/admin/manage_helpline.html:29
+#: application/templates/admin/manage_users.html:15
+#: application/templates/resident/edit_profile.html:43
+#: application/templates/resident/helpline.html:21
+#: application/templates/waste_collector/profile_waste_collector.html:36
+msgid "Email"
+msgstr "E-mel"
+
+#: application/templates/resident/edit_profile.html:40
+#: application/templates/resident/profile_resident.html:67
+msgid "Email Address"
+msgstr ""
+
+#: application/templates/resident/request_points.html:35
+msgid "Estimated Earnings"
+msgstr ""
+
+#: application/templates/resident/view_status.html:16
+#, fuzzy
+msgid "Evidence"
+msgstr "Pemastautin"
+
+#: application/templates/resident/helpline.html:29
+#, fuzzy
+msgid "FAQ"
+msgstr "Soalan Lazim"
+
+#: application/templates/admin/manage_helpline.html:51
+msgid "FAQs"
+msgstr "Soalan Lazim"
+
+#: application/templates/layout.html:51
+msgid "Feedback"
+msgstr "Maklum Balas"
+
+#: application/templates/admin/home_admin.html:71
+#: application/templates/admin/manage_feedback.html:5
+#, fuzzy
+msgid "Feedback Hub"
+msgstr "Hub Maklum Balas"
+
+#: application/templates/resident/terminology.html:53
+msgid "File a Report Now"
+msgstr ""
+
+#: application/templates/admin/manage_faq.html:13
+#: application/templates/resident/faq.html:11
+msgid "Frequently Asked Questions"
+msgstr "Soalan Lazim"
+
+#: application/templates/waste_collector/home_collector.html:12
+msgid "GPS:"
+msgstr "GPS:"
+
+#: application/templates/resident/make_complaint.html:35
+msgid "Get My Location"
+msgstr ""
+
+#: application/templates/resident/feedback.html:6
+#, fuzzy
+msgid "Give Us Feedback"
+msgstr "Berikan Kami Maklum Balas"
+
+#: application/templates/resident/home_resident.html:11
+msgid "Hello,"
+msgstr "Hai,"
+
+#: application/templates/sign_up.html:8
+msgid "Help keep our city clean and sustainable."
+msgstr "Bantu menjaga kota kita tetap bersih dan berkelanjutan."
+
+#: application/templates/layout.html:52
+msgid "Helpline"
+msgstr "Talian Bantuan"
+
+#: application/templates/admin/manage_helpline.html:7
+msgid "Helpline Management Hub"
+msgstr "Hub Pengurusan Talian Bantuan"
+
+#: application/templates/waste_collector/home_collector.html:8
+msgid "Here is your pickup schedule."
+msgstr "Berikut adalah jadual pengambilan anda."
+
+#: application/templates/layout.html:42
+msgid "Home"
+msgstr "Halaman Utama"
+
+#: application/templates/admin/manage_helpline.html:18
+#: application/templates/resident/helpline.html:13
+#, fuzzy
+msgid "Hotline"
+msgstr "Talian Panas"
+
+#: application/templates/resident/redeem_points.html:61
+msgid "How it works:"
+msgstr ""
+
+#: application/templates/admin/assign_hub.html:10
+msgid "ID"
+msgstr "ID"
+
+#: application/templates/resident/faq.html:38
+msgid "If you can't find your answer here, contact us via Live Chat or Hotline."
+msgstr ""
+
+#: application/templates/resident/view_status.html:38
+#, fuzzy
+msgid "In Action"
+msgstr "Sedang Diproses"
+
+#: application/templates/waste_collector/collector_complaint_detail.html:47
+msgid "In Action (Still Working)"
+msgstr "Sedang Diproses (Masih Bekerja)"
+
+#: application/templates/resident/home_resident.html:38
+msgid "In Progress"
+msgstr "Sedang Diproses"
+
+#: application/templates/admin/manage_chat.html:37
+#, fuzzy
+msgid "Inactive"
+msgstr "Tidak Aktif"
+
+#: application/templates/waste_collector/home_collector.html:12
+msgid "Initializing..."
+msgstr "Memulakan..."
+
+#: application/templates/waste_collector/profile_waste_collector.html:25
+msgid "Jobs Done"
+msgstr "Pekerjaan Selesai"
+
+#: application/templates/sign_up.html:7
+msgid "Join EcoClean"
+msgstr "Sertai EcoClean"
+
+#: application/templates/waste_collector/profile_waste_collector.html:29
+msgid "KG Collected"
+msgstr "KG Dikumpul"
+
+#: application/templates/change_language.html:9
+msgid "Language Hub"
+msgstr "Hub Bahasa"
+
+#: application/routes.py:390
+#, fuzzy
+msgid "Language changed to"
+msgstr "Bahasa berubah ke"
+
+#: application/templates/resident/terminology.html:39
+msgid ""
+"Large items that cannot be disposed of through regular collection, such "
+"as furniture, mattresses, or large appliances."
+msgstr ""
+
+#: application/templates/resident/news.html:14
+msgid "Latest updates and announcements from the EcoClean team."
+msgstr ""
+
+#: application/templates/resident/complaint.html:21
+msgid "Learn the difference between Domestic, Public, and Bulk waste."
+msgstr "Pelajari perbezaan antara sampah Domestik, Awam, dan Pukal."
+
+#: application/templates/admin/manage_helpline.html:40
+#: application/templates/resident/helpline.html:38
+msgid "Live Chat"
+msgstr "Sembang Langsung"
+
+#: application/templates/resident/live_chat.html:11
+#, fuzzy
+msgid "Live Chat Support"
+msgstr "Sembang Langsung"
+
+#: application/templates/admin/dashboard_summary.html:30
+msgid "Live Volume"
+msgstr "Volum Langsung"
+
+#: application/templates/admin/dashboard_summary.html:8
+msgid "Live overview of city-wide waste collection and collector performance."
+msgstr ""
+"Gambaran keseluruhan langsung pengumpulan sampah dan prestasi pengumpul "
+"di seluruh kota."
+
+#: application/templates/admin/manage_complaints.html:69
+#, fuzzy
+msgid "Location"
+msgstr "Lokasi"
+
+#: application/templates/waste_collector/home_collector.html:60
+msgid "Location Coords"
+msgstr "Koordinat Lokasi"
+
+#: application/templates/sign_up.html:87
+msgid "Log In"
+msgstr ""
+
+#: application/templates/layout.html:141 application/templates/login.html:27
+msgid "Login"
+msgstr "Daftar Masuk"
+
+#: application/templates/layout.html:135
+#: application/templates/waste_collector/profile_waste_collector.html:62
+msgid "Logout"
+msgstr "Daftar Keluar"
+
+#: application/templates/resident/complaint.html:34
+msgid "Make a New Report"
+msgstr "Buat Laporan Baru"
+
+#: application/templates/admin/assign_hub.html:30
+#, fuzzy
+msgid "Manage & Assign"
+msgstr "Urus & Tugaskan"
+
+#: application/templates/admin/manage_helpline.html:42
+#, fuzzy
+msgid "Manage Chat"
+msgstr "Urus Hub Berita"
+
+#: application/templates/admin/manage_helpline.html:53
+msgid "Manage FAQ"
+msgstr "Urus Soalan Lazim"
+
+#: application/templates/admin/manage_faq.html:10
+#, fuzzy
+msgid "Manage FAQs"
+msgstr "Urus Soalan Lazim"
+
+#: application/templates/layout.html:81
+msgid "Manage Helpline"
+msgstr "Urus Talian Bantuan"
+
+#: application/templates/admin/home_admin.html:74
+#, fuzzy
+msgid "Manage News Hub"
+msgstr "Urus Hub Berita"
+
+#: application/templates/admin/manage_helpline.html:41
+msgid "Manage active chat channels."
+msgstr "Urus saluran sembang aktif."
+
+#: application/templates/admin/manage_helpline.html:52
+msgid "Manage common questions."
+msgstr "Urus soalan biasa."
+
+#: application/templates/admin/manage_news.html:9
+msgid "Manage community announcements and alerts"
+msgstr "Urus pengumuman dan amaran komuniti"
+
+#: application/templates/admin/manage_chat.html:8
+msgid "Manage your live support channels for residents."
+msgstr "Urus saluran sokongan langsung anda untuk pemastautin."
+
+#: application/templates/admin/home_admin.html:62
+msgid "Management Tools"
+msgstr "Alat Pengurusan"
+
+#: application/templates/admin/verify_points.html:14
+msgid "Material:"
+msgstr "Bahan:"
+
+#: application/templates/resident/profile_resident.html:20
+msgid "Member"
+msgstr ""
+
+#: application/templates/resident/profile_resident.html:41
+msgid "Membership Tier"
+msgstr ""
+
+#: application/templates/admin/dashboard_summary.html:85
+msgid "Monitor Active Routes"
+msgstr "Pantau Laluan Aktif"
+
+#: application/templates/resident/view_status.html:5
+#, fuzzy
+msgid "My Complaint Status"
+msgstr "Aduan"
+
+#: application/templates/layout.html:120 application/templates/layout.html:128
+msgid "My Profile"
+msgstr "Profil Saya"
+
+#: application/templates/resident/home_resident.html:53
+msgid "My Recent Activity"
+msgstr "Aktiviti Terkini Saya"
+
+#: application/form.py:58
+#, fuzzy
+msgid "Nature of Feedback"
+msgstr "Sifat Maklum Balas"
+
+#: application/templates/resident/redeem_points.html:49
+msgid "Need"
+msgstr ""
+
+#: application/templates/resident/terminology.html:41
+msgid "Needs Request & Schedule"
+msgstr ""
+
+#: application/templates/admin/manage_chat.html:12
+#, fuzzy
+msgid "New Channel"
+msgstr "Saluran Baru"
+
+#: application/templates/resident/home_resident.html:14
+#: application/templates/resident/view_status.html:7
+#, fuzzy
+msgid "New Report"
+msgstr "Tarikh Dilaporkan"
+
+#: application/templates/resident/rewards.html:36
+#, fuzzy
+msgid "New Request"
+msgstr "Permintaan Poin"
+
+#: application/templates/login.html:33
+msgid "New here?"
+msgstr "Baru di sini?"
+
+#: application/templates/layout.html:48
+#: application/templates/resident/news_detail.html:14
+msgid "News"
+msgstr "Berita"
+
+#: application/templates/admin/manage_news.html:7
+#: application/templates/layout.html:86
+msgid "News Hub"
+msgstr "Hab Berita"
+
+#: application/templates/resident/faq_detail.html:24
+msgid "No"
+msgstr "Tidak"
+
+#: application/templates/waste_collector/update_complaint_status.html:51
+#, fuzzy
+msgid "No Assigned Complaints"
+msgstr "Tiada Aduan Ditugaskan"
+
+#: application/templates/admin/manage_faq.html:56
+msgid "No FAQs found"
+msgstr "Tiada Soalan Lazim ditemui"
+
+#: application/templates/resident/faq.html:32
+msgid "No FAQs have been posted yet. Please check back later!"
+msgstr ""
+
+#: application/templates/waste_collector/home_collector.html:96
+msgid "No active tasks assigned!"
+msgstr "Tiada tugasan aktif ditugaskan!"
+
+#: application/templates/resident/home_resident.html:122
+msgid "No announcements today."
+msgstr "Tiada pengumuman hari ini."
+
+#: application/templates/admin/manage_chat.html:57
+msgid "No channels created yet."
+msgstr "Tiada saluran dibuat lagi."
+
+#: application/templates/admin/manage_feedback.html:34
+msgid "No feedback has been submitted yet."
+msgstr "Tiada maklum balas dikemukakan lagi."
+
+#: application/templates/resident/live_chat.html:39
+msgid ""
+"No live chat channels are currently active. Please try again later or "
+"contact our hotline."
+msgstr ""
+
+#: application/templates/resident/news.html:64
+msgid "No news posts available at the moment."
+msgstr "Tiada siaran berita tersedia pada masa ini."
+
+#: application/templates/admin/verify_points.html:32
+msgid "No pending point requests to verify."
+msgstr "Tiada permintaan poin tertangguh untuk disahkan."
+
+#: application/templates/admin/manage_complaints.html:40
+#, fuzzy
+msgid "No photo available"
+msgstr "Tiada foto tersedia"
+
+#: application/templates/waste_collector/collector_complaint_detail.html:19
+msgid "No photo provided"
+msgstr "Tiada foto disediakan"
+
+#: application/templates/resident/rewards.html:93
+msgid "No recycling history found."
+msgstr "Tiada sejarah kitar semula ditemui."
+
+#: application/templates/admin/manage_users.html:47
+msgid "No residents registered yet."
+msgstr "Tiada pemastautin didaftar lagi."
+
+#: application/templates/resident/redeem_points.html:46
+#, fuzzy
+msgid "Not Enough Points"
+msgstr "Poin Berpotensi:"
+
+#: application/templates/resident/redeem_points.html:61
+msgid ""
+"Once you click redeem, your points are deducted instantly. You can "
+"collect your physical rewards at the main recycling center or find your "
+"digital vouchers in your email."
+msgstr ""
+
+#: application/templates/waste_collector/profile_waste_collector.html:45
+#, fuzzy
+msgid "Online"
+msgstr "Dalam Talian"
+
+#: application/templates/sign_up.html:48
+msgid "Optional: Upload a JPG or PNG profile picture."
+msgstr "Pilihan: Muat naik gambar profil JPG atau PNG."
+
+#: application/templates/resident/rewards.html:20
+#: application/templates/resident/view_status.html:36
+#, fuzzy
+msgid "Pending"
+msgstr "Menunggu"
+
+#: application/templates/admin/assign_hub.html:4
+msgid "Pending Assignments"
+msgstr "Tugasan Tertangguh"
+
+#: application/templates/resident/home_resident.html:31
+msgid "Pending Complaints"
+msgstr "Aduan Tertangguh"
+
+#: application/templates/admin/home_admin.html:29
+msgid "Pending Dispatch"
+msgstr "Penghantaran Tertangguh"
+
+#: application/templates/admin/dashboard_summary.html:76
+msgid "Performance"
+msgstr "Prestasi"
+
+#: application/templates/admin/manage_news.html:68
+msgid "Permanent delete: are you sure?"
+msgstr "Padam kekal: anda pasti?"
+
+#: application/templates/resident/make_complaint.html:8
+msgid "Please provide details and confirm the location for collection."
+msgstr ""
+
+#: application/templates/admin/manage_users.html:16
+#: application/templates/resident/redeem_points.html:32
+#, fuzzy
+msgid "Points"
+msgstr "Poin"
+
+#: application/templates/resident/rewards.html:53
+msgid "Points History"
+msgstr ""
+
+#: application/templates/resident/news.html:20
+msgid "Post Update"
+msgstr ""
+
+#: application/templates/admin/manage_news.html:21
+msgid "Posted Date"
+msgstr "Tarikh Disiarkan"
+
+#: application/templates/resident/news.html:55
+msgid "Posted by"
+msgstr ""
+
+#: application/templates/admin/verify_points.html:18
+#, fuzzy
+msgid "Potential Points:"
+msgstr "Poin Berpotensi:"
+
+#: application/templates/waste_collector/collector_complaint_detail.html:69
+msgid "Previous evidence uploaded. Upload again to replace."
+msgstr "Bukti terdahulu dimuat naik. Muat naik semula untuk menggantikan."
+
+#: application/templates/resident/edit_profile.html:18
+#, fuzzy
+msgid "Profile"
+msgstr "Profil"
+
+#: application/templates/resident/complaint.html:58
+msgid ""
+"Providing clear photos and accurate map markers helps our team respond "
+"faster."
+msgstr ""
+
+#: application/templates/resident/terminology.html:28
+msgid "Public Cleaning"
+msgstr ""
+
+#: application/templates/resident/news.html:46
+msgid "Read Full Story"
+msgstr ""
+
+#: application/templates/resident/terminology.html:50
+msgid "Ready to report an issue?"
+msgstr ""
+
+#: application/templates/resident/home_resident.html:128
+msgid "Recent Community Activity"
+msgstr "Aktiviti Komuniti Terbaru"
+
+#: application/templates/admin/home_admin.html:88
+msgid "Recent Urgent Reports"
+msgstr "Laporan Mendesak Terbaru"
+
+#: application/templates/resident/rewards.html:34
+msgid "Recycle & Earn"
+msgstr "Kitar & Hasilkan Poin"
+
+#: application/templates/admin/dashboard_summary.html:55
+msgid "Recycling Rate"
+msgstr "Kadar Kitar Semula"
+
+#: application/templates/resident/redeem_points.html:41
+msgid "Redeem Now"
+msgstr ""
+
+#: application/templates/resident/redeem_points.html:9
+#, fuzzy
+msgid "Redeem Points"
+msgstr "Tukar Poin"
+
+#: application/templates/admin/dashboard_summary.html:108
+msgid "Refresh Data"
+msgstr "Segarkan Data"
+
+#: application/templates/waste_collector/home_collector.html:42
+#, fuzzy
+msgid "Refresh GPS"
+msgstr "Segarkan GPS"
+
+#: application/templates/layout.html:142
+msgid "Register"
+msgstr "Daftar"
+
+#: application/templates/admin/verify_points.html:25
+msgid "Reject"
+msgstr "Tolak"
+
+#: application/templates/resident/helpline.html:22
+msgid "Reply within 24h"
+msgstr ""
+
+#: application/templates/resident/home_resident.html:62
+#, fuzzy
+msgid "Report"
+msgstr "Tarikh Dilaporkan"
+
+#: application/templates/waste_collector/home_collector.html:59
+#, fuzzy
+msgid "Report ID"
+msgstr "ID Laporan"
+
+#: application/templates/resident/make_complaint.html:7
+msgid "Report Waste"
+msgstr "Laporkan Sampah"
+
+#: application/templates/waste_collector/update_complaint_status.html:33
+#, fuzzy
+msgid "Reported:"
+msgstr "Dilaporkan:"
+
+#: application/templates/admin/manage_complaints.html:60
+#, fuzzy
+msgid "Reporter"
+msgstr "Pelapor"
+
+#: application/templates/admin/home_admin.html:95
+msgid "Resident"
+msgstr "Pemastautin"
+
+#: application/templates/admin/dashboard_summary.html:104
+#, fuzzy
+msgid "Resident Rewards"
+msgstr "Pemastautin"
+
+#: application/templates/admin/home_admin.html:18
+#: application/templates/admin/manage_users.html:6
+msgid "Residents"
+msgstr "Pemastautin"
+
+#: application/templates/resident/home_resident.html:45
+msgid "Resolved"
+msgstr "Diselesaikan"
+
+#: application/templates/admin/home_admin.html:51
+msgid "Resolved Cases"
+msgstr "Kes Diselesaikan"
+
+#: application/templates/admin/manage_feedback.html:6
+msgid "Review and manage feedback submitted by residents."
+msgstr "Semak dan urus maklum balas yang dikemukakan oleh pemastautin."
+
+#: application/templates/layout.html:50
+msgid "Rewards"
+msgstr "Ganjaran"
+
+#: application/templates/resident/rewards.html:6
+#, fuzzy
+msgid "Rewards Hub"
+msgstr "Hub Ganjaran"
+
+#: application/templates/admin/manage_users.html:18
+#, fuzzy
+msgid "Role"
+msgstr "Peranan"
+
+#: application/templates/resident/terminology.html:19
+msgid ""
+"Rubbish produced from daily activities in homes. Includes food scraps, "
+"paper, plastic, glass, and metal items thrown away daily."
+msgstr ""
+
+#: application/templates/resident/live_chat.html:15
+msgid "Select a channel to start a conversation with our support team."
+msgstr ""
+
+#: application/templates/resident/complaint.html:8
+msgid ""
+"Select an option below to manage your waste reports or learn about "
+"categories."
+msgstr ""
+"Pilih pilihan di bawah untuk menguruskan laporan sampah anda atau "
+"pelajari tentang kategori."
+
+#: application/templates/change_language.html:10
+msgid "Select your preferred language."
+msgstr "Pilih bahasa pilihan anda."
+
+#: application/templates/sign_up.html:42
+msgid "Select your primary role in the system."
+msgstr "Pilih peranan utama anda dalam sistem."
+
+#: application/form.py:70
+#, fuzzy
+msgid "Send Feedback"
+msgstr "Hantar Maklum Balas"
+
+#: application/form.py:61
+msgid "Service Issue"
+msgstr "Isu Perkhidmatan"
+
+#: application/templates/admin/manage_helpline.html:30
+msgid "Set the official support address."
+msgstr "Tetapkan alamat sokongan rasmi."
+
+#: application/templates/resident/feedback.html:30
+msgid "Share your thoughts here..."
+msgstr "Kongsikan pemikiran anda di sini..."
+
+#: application/templates/login.html:33
+msgid "Sign Up Now"
+msgstr "Daftar Sekarang"
+
+#: application/templates/resident/rewards.html:44
+#, fuzzy
+msgid "Spend Points"
+msgstr "Belanjakan Mata"
+
+#: application/templates/resident/helpline.html:40
+#: application/templates/resident/live_chat.html:29
+msgid "Start Chat"
+msgstr "Mulai Sembang"
+
+#: application/templates/admin/manage_faq.html:57
+msgid "Start by adding your first question for the residents."
+msgstr "Mulakan dengan menambah soalan pertama anda untuk pemastautin."
+
+#: application/templates/admin/assign_hub.html:12
+#: application/templates/admin/home_admin.html:97
+#: application/templates/admin/manage_chat.html:24
+#: application/templates/resident/home_resident.html:64
+#: application/templates/resident/view_status.html:19
+#: application/templates/waste_collector/profile_waste_collector.html:44
+#, fuzzy
+msgid "Status"
+msgstr "Status"
+
+#: application/templates/admin/manage_complaints.html:47
+#, fuzzy
+msgid "Status:"
+msgstr "Status:"
+
+#: application/templates/resident/faq.html:37
+msgid "Still have questions?"
+msgstr ""
+
+#: application/form.py:64
+#, fuzzy
+msgid "Subject"
+msgstr "Subjek"
+
+#: application/templates/resident/rewards.html:35
+msgid "Submit a photo of your sorted waste to earn new points."
+msgstr ""
+
+#: application/templates/resident/request_points.html:8
+msgid "Submit your waste weight to contribute to city recycling data."
+msgstr ""
+
+#: application/form.py:59
+msgid "Suggestion"
+msgstr "Cadangan"
+
+#: application/templates/resident/helpline.html:5
+#, fuzzy
+msgid "Support Center"
+msgstr "Pusat Sokongan"
+
+#: application/templates/admin/dashboard_summary.html:16
+msgid "System Live"
+msgstr ""
+
+#: application/templates/waste_collector/home_collector.html:15
+msgid "System Online"
+msgstr "Sistem Dalam Talian"
+
+#: application/templates/admin/dashboard_summary.html:99
+msgid "System Status: Operational"
+msgstr "Status Sistem: Beroperasi"
+
+#: application/templates/admin/dashboard_summary.html:78
+msgid "Task Completion"
+msgstr "Penyelesaian Tugas"
+
+#: application/templates/waste_collector/profile_waste_collector.html:57
+msgid "Tasks"
+msgstr "Tugasan"
+
+#: application/templates/admin/dashboard_summary.html:104
+msgid "This dashboard aggregates real-time data from"
+msgstr "Papan pemuka ini mengumpulkan data masa nyata daripada"
+
+#: application/templates/admin/manage_users.html:17
+#, fuzzy
+msgid "Tier"
+msgstr "Peringkat"
+
+#: application/templates/resident/home_resident.html:12
+msgid ""
+"Together, we can keep our neighborhood clean and sustainable. Have you "
+"spotted any waste issues today?"
+msgstr ""
+"Bersama-sama, kita boleh menjaga kawasan kita tetap bersih dan lestari. "
+"Adakah anda menemui sebarang isu sampah hari ini?"
+
+#: application/templates/resident/profile_resident.html:49
+#, fuzzy
+msgid "Total Actions"
+msgstr "Tindakan"
+
+#: application/templates/admin/dashboard_summary.html:32
+msgid "Total Waste Volume"
+msgstr "Jumlah Volum Sampah"
+
+#: application/templates/resident/rewards.html:7
+msgid "Track your recycling impact and claim your rewards."
+msgstr ""
+
+#: application/templates/waste_collector/home_collector.html:38
+msgid "Tracking Status"
+msgstr "Status Pelacakan"
+
+#: application/templates/admin/assign_hub.html:11
+#: application/templates/admin/home_admin.html:96
+#: application/templates/resident/view_status.html:17
+msgid "Type"
+msgstr "Jenis"
+
+#: application/templates/admin/home_admin.html:40
+msgid "Unresponded Messages"
+msgstr "Mesej Belum Dibalas"
+
+#: application/templates/resident/profile_resident.html:79
+#, fuzzy
+msgid "Update Account Settings"
+msgstr "Kemas Kini Status"
+
+#: application/templates/resident/edit_profile.html:54
+#, fuzzy
+msgid "Update Profile"
+msgstr "Profil Saya"
+
+#: application/templates/layout.html:58
+msgid "Update Status"
+msgstr "Kemas Kini Status"
+
+#: application/templates/waste_collector/collector_complaint_detail.html:77
+msgid "Update Task & Save Progress"
+msgstr "Kemas Kini Tugasan & Simpan Kemajuan"
+
+#: application/templates/waste_collector/collector_complaint_detail.html:37
+msgid "Update Work Progress"
+msgstr "Kemas Kini Kemajuan Kerja"
+
+#: application/templates/admin/manage_helpline.html:19
+msgid "Update the emergency contact number."
+msgstr ""
+
+#: application/templates/resident/edit_profile.html:20
+msgid "Update your account credentials below"
+msgstr ""
+
+#: application/templates/resident/complaint.html:35
+msgid "Upload a photo and pin the location of waste on the map."
+msgstr "Muat naik foto dan letakkan pindia lokasi sampah di peta."
+
+#: application/templates/waste_collector/collector_complaint_detail.html:72
+msgid "Upload photo of the cleared area as proof."
+msgstr "Muat naik foto kawasan yang dibersihkan sebagai bukti."
+
+#: application/templates/resident/rewards.html:45
+msgid "Use your available balance to redeem vouchers and eco-prizes."
+msgstr ""
+
+#: application/templates/admin/manage_users.html:14
+#, fuzzy
+msgid "User"
+msgstr "Nama Pengguna"
+
+#: application/templates/admin/home_admin.html:80
+#: application/templates/admin/manage_users.html:5
+msgid "User Database"
+msgstr "Pangkalan Data Pengguna"
+
+#: application/templates/resident/edit_profile.html:27
+#: application/templates/resident/edit_profile.html:30
+#: application/templates/resident/profile_resident.html:62
+msgid "Username"
+msgstr "Nama Pengguna"
+
+#: application/templates/admin/dashboard_summary.html:53
+msgid "Verified"
+msgstr "Disahkan"
+
+#: application/templates/waste_collector/profile_waste_collector.html:18
+#, fuzzy
+msgid "Verified Collector"
+msgstr "Pengumpul Disahkan"
+
+#: application/templates/admin/home_admin.html:68
+#: application/templates/admin/verify_points.html:4
+#, fuzzy
+msgid "Verify Point Requests"
+msgstr "Sahkan Permintaan Poin"
+
+#: application/templates/layout.html:76
+msgid "Verify Points"
+msgstr "Sahkan Poin"
+
+#: application/templates/resident/home_resident.html:54
+#, fuzzy
+msgid "View All"
+msgstr "Lihat Semua Aktiviti"
+
+#: application/templates/admin/home_admin.html:89
+msgid "View All Activity"
+msgstr "Lihat Semua Aktiviti"
+
+#: application/templates/admin/dashboard_summary.html:39
+msgid "View Detailed Logs"
+msgstr "Lihat Log Terperinci"
+
+#: application/templates/admin/manage_feedback.html:26
+#: application/templates/waste_collector/update_complaint_status.html:38
+#, fuzzy
+msgid "View Details"
+msgstr "Lihat Butiran"
+
+#: application/templates/resident/helpline.html:31
+msgid "View FAQ"
+msgstr ""
+
+#: application/templates/resident/complaint.html:49
+msgid "View your history and track progress of your submissions."
+msgstr "Lihat sejarah anda dan jejaki kemajuan penyerahan anda."
+
+#: application/templates/resident/rewards.html:46
+msgid "Visit Store"
+msgstr ""
+
+#: application/templates/waste_collector/collector_complaint_detail.html:54
+#, fuzzy
+msgid "WASTE VOLUME (KG)"
+msgstr "VOLUM SAMPAH (KG)"
+
+#: application/templates/waste_collector/home_collector.html:39
+msgid "Waiting for location permission..."
+msgstr "Menunggu kebenaran lokasi..."
+
+#: application/templates/resident/faq_detail.html:21
+msgid "Was this helpful?"
+msgstr ""
+
+#: application/templates/waste_collector/profile_waste_collector.html:41
+#, fuzzy
+msgid "Waste Collector"
+msgstr "Pengumpul Sampah"
+
+#: application/templates/layout.html:49
+msgid "Waste Complaints"
+msgstr "Aduan Sisa"
+
+#: application/templates/resident/complaint.html:7
+msgid "Waste Reporting Center"
+msgstr "Pusat Pelaporan Sampah"
+
+#: application/templates/waste_collector/home_collector.html:61
+msgid "Waste Type"
+msgstr "Jenis Sampah"
+
+#: application/templates/resident/home_resident.html:138
+#, fuzzy
+msgid "Waste reported"
+msgstr "Sampah dilaporkan"
+
+#: application/templates/resident/feedback.html:7
+msgid "We value your suggestions to make EcoClean better."
+msgstr "Kami menghargai cadangan anda untuk membuat EcoClean lebih baik."
+
+#: application/templates/admin/verify_points.html:15
+msgid "Weight:"
+msgstr "Berat:"
+
+#: application/templates/login.html:9
+msgid "Welcome Back"
+msgstr "Selamat Kembali"
+
+#: application/templates/waste_collector/home_collector.html:8
+#, fuzzy
+msgid "Welcome back,"
+msgstr "Selamat kembali,"
+
+#: application/templates/admin/home_admin.html:7
+#, fuzzy
+msgid "Welcome back, "
+msgstr "Selamat kembali, "
+
+#: application/templates/resident/feedback.html:22
+msgid "What is this about?"
+msgstr "Ini tentang apa?"
+
+#: application/templates/resident/faq_detail.html:23
+msgid "Yes"
+msgstr "Ya"
+
+#: application/templates/waste_collector/update_complaint_status.html:52
+msgid "You are all caught up! Check back later for new tasks."
+msgstr "Anda sudah bersedia! Semak semula kemudian untuk tugas baru."
+
+#: application/templates/resident/make_complaint.html:44
+msgid "You can drag the pin to adjust the exact spot."
+msgstr ""
+
+#: application/templates/resident/view_status.html:48
+msgid "You haven't submitted any reports yet."
+msgstr ""
+
+#: application/templates/waste_collector/update_complaint_status.html:7
+#, fuzzy
+msgid "Your Assignments"
+msgstr "Tugasan Anda"
+
+#: application/templates/resident/redeem_points.html:15
+msgid "Your Balance"
+msgstr ""
+
+#: application/form.py:65
+#, fuzzy
+msgid "Your Message"
+msgstr "Mesej Anda"
+
+#: application/form.py:67
+msgid "Your message is too short."
+msgstr "Mesej anda terlalu pendek."
+
+#: application/templates/resident/terminology.html:51
+msgid "Your reports help us keep the community clean and organized."
+msgstr ""
+
+#: application/templates/admin/dashboard_summary.html:104
+msgid "and"
+msgstr "dan"
+
+#: application/templates/resident/redeem_points.html:40
+msgid "for"
+msgstr ""
+
+#: application/templates/admin/dashboard_summary.html:35
+#: application/templates/admin/verify_points.html:15
+msgid "kg"
+msgstr "kg"
+
+#: application/templates/resident/redeem_points.html:49
+#, fuzzy
+msgid "more points"
+msgstr "Sahkan Poin"
+
+#: application/templates/resident/redeem_points.html:40
+#, fuzzy
+msgid "points?"
+msgstr "Sahkan Poin"
+
+#: application/templates/admin/manage_users.html:33
+#: application/templates/resident/redeem_points.html:16
+#: application/templates/resident/request_points.html:37
+#: application/templates/resident/rewards.html:15
+#: application/templates/resident/rewards.html:21
+msgid "pts"
+msgstr "pts"
+

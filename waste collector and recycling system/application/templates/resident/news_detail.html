@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    .text-success-custom { color: #2ecc71 !important; }
+    .bg-success-custom { background-color: #2ecc71 !important; color: white !important; }
+    .news-content { color: #444 !important; }
+</style>
+
+<div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('main.news') }}" class="text-success-custom text-decoration-none">{{ _('News') }}</a></li>
+                <li class="breadcrumb-item active text-muted" aria-current="page">{{ _('Details') }}</li>
+            </ol>
+        </nav>
+
+        <div class="card border-0 shadow-sm rounded-3">
+            <div class="card-body p-4 p-md-5">
+                <span class="badge bg-success-custom px-3 py-2 mb-3">{{ post.category }}</span>
+                
+                <h1 class="fw-bold mb-4" style="letter-spacing: -0.5px;">{{ post.title }}</h1>
+                
+                <div class="d-flex flex-wrap align-items-center mb-4 pb-4 border-bottom text-muted">
+                    <div class="me-4 mb-2">
+                        <i class="bi bi-calendar3 me-2 text-success-custom"></i>
+                        <span>{{ post.date_posted.strftime('%B %d, %Y') }}</span>
+                    </div>
+                    <div class="mb-2">
+                        <i class="bi bi-person me-2 text-success-custom"></i>
+                        <span>{{ _('By') }} <strong>{{ post.author.username if post.author else 'Admin' }}</strong></span>
+                    </div>
+                </div>
+
+                <div class="news-content" style="line-height: 1.8; font-size: 1.15rem; white-space: pre-wrap;">
+                    {{ post.content }}
+                </div>
+
+                <div class="mt-5 pt-4 border-top">
+                    <a href="{{ url_for('main.news') }}" class="btn btn-outline-dark rounded-pill px-4">
+                        <i class="bi bi-arrow-left me-2"></i>{{ _('Back to News Feed') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

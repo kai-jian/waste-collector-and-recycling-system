@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="display-5">{{ _('Verify Point Requests') }}</h1>
+            <p class="lead text-muted">{{ _('Review and verify the waste submissions from residents. Ensure the weight and material type match what is claimed.') }}</p>
+        </div>
+    </div>
+
+    {% if requests %}
+        <div class="row g-4">
+            {% for request in requests %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+                    <!-- Image Section -->
+                    <div style="position: relative; height: 200px; overflow: hidden; background-color: #f8f9fa;">
+                        <img src="{{ url_for('static', filename='point_request_pics/' + request.image_file) }}" 
+                             class="w-100 h-100" style="object-fit: cover;">
+                        <span class="badge bg-primary position-absolute top-2 end-2">
+                            ID: {{ request.id }}
+                        </span>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <!-- Resident Info -->
+                        <div class="mb-3">
+                            <h5 class="fw-bold mb-1">{{ request.resident.username }}</h5>
+                            <small class="text-muted">
+                                <i class="bi bi-calendar me-1"></i>{{ request.date_submitted.strftime('%b %d, %Y') }}
+                            </small>
+                        </div>
+
+                        <!-- Waste Details -->
+                        <div class="border-top pt-3 pb-3">
+                            <p class="mb-1 small">
+                                <span class="text-muted">{{ _('Material Type:') }}</span>
+                                <br>
+                                <strong class="text-capitalize">{{ request.waste_type }}</strong>
+                            </p>
+                            <p class="mb-3 small">
+                                <span class="text-muted">{{ _('Claimed Weight:') }}</span>
+                                <br>
+                                <strong>{{ request.weight }} kg</strong>
+                            </p>
+                        </div>
+
+                        <!-- Points Info -->
+                        <div class="alert alert-info py-2 text-center mb-3 small">
+                            <i class="bi bi-star me-1"></i>
+                            <strong>{{ request.points_earned }} {{ _('Points') }}</strong>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-grid gap-2">
+                            <form action="{{ url_for('main.collector_update_point_status', request_id=request.id, action='approve') }}" method="POST">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-success w-100 rounded-pill" 
+                                        onclick="return confirm('{{ _('Approve this point request?') }}')">
+                                    <i class="bi bi-check-circle me-1"></i>{{ _('Approve') }}
+                                </button>
+                            </form>
+                            <form action="{{ url_for('main.collector_update_point_status', request_id=request.id, action='reject') }}" method="POST">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-outline-danger w-100 rounded-pill" 
+                                        onclick="return confirm('{{ _('Reject this point request?') }}')">
+                                    <i class="bi bi-x-circle me-1"></i>{{ _('Reject') }}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="card border-0 shadow-sm rounded-4 p-5 text-center">
+            <i class="bi bi-inbox display-4 text-muted mb-3"></i>
+            <h4 class="text-muted">{{ _('No Pending Requests') }}</h4>
+            <p class="text-muted">{{ _('All point requests have been verified. Great work!') }}</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

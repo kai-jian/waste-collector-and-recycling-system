@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-12 text-center">
+        <div class="p-5 mb-4 bg-light rounded-3 shadow-sm border">
+            <h1 class="display-4 fw-bold text-success">EcoClean Dashboard</h1>
+            <p class="lead mt-3">
+                Welcome back, <strong>{{ current_user.username if current_user.is_authenticated else 'Guest' }}</strong>!
+            </p>
+            <hr class="my-4">
+            <p>Use the navigation bar to report waste issues or view your submission history.</p>
+            
+            {% if current_user.is_authenticated %}
+                <div class="mt-4">
+                    <a href="#" class="btn btn-primary btn-lg px-4">Report New Issue</a>
+                    <a href="#" class="btn btn-outline-secondary btn-lg px-4 ms-2">View My Reports</a>
+                </div>
+            {% else %}
+                <div class="mt-4">
+                    <a href="{{ url_for('main.login') }}" class="btn btn-success btn-lg px-4">Login to Start</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title">Identify</h5>
+                <p class="card-text text-muted">See waste that needs collecting? Take a photo and pinpoint the location.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title">Report</h5>
+                <p class="card-text text-muted">Upload the details through our portal instantly.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title">Track</h5>
+                <p class="card-text text-muted">Watch the status change from 'Pending' to 'Resolved' in real-time.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

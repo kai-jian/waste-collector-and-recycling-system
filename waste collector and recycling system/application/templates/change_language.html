@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center text-center">
+        <div class="col-md-8">
+            <div class="mb-4">
+                <i class="bi bi-translate display-1 text-success"></i>
+            </div>
+            <h1 class="fw-bold">{{ _('Language Hub') }}</h1>
+            <p class="text-muted mb-5">{{ _('Select your preferred language.') }}</p>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <a href="{{ url_for('main.set_language', language='en') }}" class="card w-100 border-0 shadow-sm py-4 btn-language" style="text-decoration: none; color: inherit; cursor: pointer;">
+                        <div class="fs-1">🇺🇸</div>
+                        <div class="fw-bold mt-2">English</div>
+                        {% if session.get('language', 'en') == 'en' %}
+                            <small class="text-success">{{ _('Current') }}</small>
+                        {% else %}
+                            <small class="text-muted">{{ _('Available') }}</small>
+                        {% endif %}
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="{{ url_for('main.set_language', language='ms') }}" class="card w-100 border-0 shadow-sm py-4 btn-language" style="text-decoration: none; color: inherit; cursor: pointer;">
+                        <div class="fs-1">🇲🇾</div>
+                        <div class="fw-bold mt-2">Bahasa Melayu</div>
+                        {% if session.get('language') == 'ms' %}
+                            <small class="text-success">{{ _('Current') }}</small>
+                        {% else %}
+                            <small class="text-muted">{{ _('Available') }}</small>
+                        {% endif %}
+                    </a>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="{{ url_for('main.set_language', language='zh') }}" class="card w-100 border-0 shadow-sm py-4 btn-language" style="text-decoration: none; color: inherit; cursor: pointer;">
+                        <div class="fs-1">🇨🇳</div>
+                        <div class="fw-bold mt-2">中文</div>
+                        {% if session.get('language') == 'zh' %}
+                            <small class="text-success">{{ _('Current') }}</small>
+                        {% else %}
+                            <small class="text-muted">{{ _('Available') }}</small>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-5">
+                <a href="{{ url_for('main.home') }}" class="btn btn-dark rounded-pill px-5 py-2">
+                    {{ _('Back to Hub') }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-language {
+        background: white;
+        transition: all 0.2s ease-in-out;
+        border: 2px solid transparent !important;
+    }
+    
+    .btn-language:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
+        border-color: #198754 !important;
+        background-color: #f8f9fa;
+    }
+    
+    .active-lang {
+        border-color: #198754 !important;
+        background-color: #f0fff4;
+    }
+</style>
+{% endblock %}

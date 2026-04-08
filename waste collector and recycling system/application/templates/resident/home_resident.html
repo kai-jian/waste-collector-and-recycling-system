@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card bg-success text-white border-0 shadow-lg overflow-hidden" style="border-radius: 20px;">
+                <div class="card-body p-5 position-relative">
+                    <div class="row align-items-center">
+                        <div class="col-md-8 position-relative" style="z-index: 2;">
+                            <h1 class="display-5 fw-bold mb-2">{{ _('Hello,') }} {{ current_user.username }}!</h1>
+                            <p class="lead opacity-75 mb-4">{{ _('Together, we can keep our neighborhood clean and sustainable. Have you spotted any waste issues today?') }}</p>
+                            <a href="{{ url_for('main.make_complaint') }}" class="btn btn-light btn-lg px-5 fw-bold text-success rounded-pill shadow">
+                                <i class="bi bi-megaphone-fill me-2"></i>{{ _('New Report') }}
+                            </a>
+                        </div>
+                        <div class="col-md-4 text-end d-none d-md-block">
+                            <i class="bi bi-recycle text-white opacity-25" style="font-size: 10rem; position: absolute; right: 20px; top: -20px;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4 g-3">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 text-center p-3 h-100">
+                <div class="text-secondary opacity-75 fs-2"><i class="bi bi-clock-history"></i></div>
+                <h3 class="fw-bold mb-0">{{ pending }}</h3>
+                <small class="text-muted fw-semibold">{{ _('Pending Complaints') }}</small>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 text-center p-3 h-100">
+                <div class="text-warning fs-2"><i class="bi bi-truck"></i></div>
+                <h3 class="fw-bold mb-0">{{ in_action }}</h3>
+                <small class="text-muted fw-semibold">{{ _('In Progress') }}</small>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 text-center p-3 h-100">
+                <div class="text-success fs-2"><i class="bi bi-check-circle-fill"></i></div>
+                <h3 class="fw-bold mb-0">{{ completed }}</h3>
+                <small class="text-muted fw-semibold">{{ _('Resolved') }}</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="fw-bold mb-0">{{ _('My Recent Activity') }}</h4>
+                <a href="{{ url_for('main.view_status') }}" class="btn btn-sm btn-outline-success">{{ _('View All') }}</a>
+            </div>
+            
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-4">{{ _('Report') }}</th>
+                                <th>{{ _('Category') }}</th>
+                                <th>{{ _('Status') }}</th>
+                                <th class="text-end pe-4">{{ _('Date') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for complaint in my_complaints[:5] %} 
+                            <tr>
+                                <td class="ps-4">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ url_for('static', filename='complaint_pics/' + complaint.photo) }}" 
+                                             class="rounded shadow-sm me-3" 
+                                             style="width: 45px; height: 45px; object-fit: cover;">
+                                        <span class="text-truncate" style="max-width: 150px;">{{ complaint.content }}</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge bg-light text-dark border">{{ complaint.type }}</span></td>
+                                <td>
+                                    {% if complaint.status == 'Pending' %}
+                                        <span class="text-secondary small"><i class="bi bi-clock-history"></i> Pending</span>
+                                    {% elif complaint.status == 'In Action' %}
+                                        <span class="text-warning small"><i class="bi bi-truck"></i> In Action</span>
+                                    {% else %}
+                                        <span class="text-success small"><i class="bi bi-check-circle-fill"></i> Resolved</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-end pe-4 text-muted small">{{ complaint.date_posted.strftime('%d %b') }}</td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="4" class="text-center py-5">
+                                    <p class="text-muted mb-0">No reports made yet. Click 'New Report' to start!</p>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h4 class="fw-bold mb-3">{{ _('Community News') }}</h4>
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+                <div class="list-group list-group-flush">
+                    {% for post in news %}
+                    <div class="list-group-item border-0 border-bottom p-3">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-sm bg-primary bg-opacity-10 text-primary rounded-circle me-3 p-2">
+                                <i class="bi bi-megaphone"></i>
+                            </div>
+                            <div>
+                                <p class="mb-0 small fw-bold">{{ post.title }}</p>
+                                <small class="text-muted d-block text-truncate" style="max-width: 200px;">{{ post.content }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="p-4 text-center text-muted">
+                        <small>{{ _('No announcements today.') }}</small>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <h4 class="fw-bold mb-3">{{ _('Recent Community Activity') }}</h4>
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="list-group list-group-flush">
+                    {% for item in community_complaints[:3] %}
+                    <div class="list-group-item border-0 border-bottom p-3">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-sm bg-success bg-opacity-10 text-success rounded-circle me-3 p-2">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div>
+                                <p class="mb-0 small fw-bold">{{ _('Waste reported') }}</p>
+                                <small class="text-muted">{{ item.type }} • {{ item.date_posted.strftime('%d %b') }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .avatar-sm { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+    .card { transition: transform 0.2s; }
+    .card:hover { transform: translateY(-3px); }
+    .rounded-4 { border-radius: 1rem !important; }
+    .list-group-item { background: transparent; transition: background 0.2s; }
+    .list-group-item:hover { background: #fdfdfd; }
+</style>
+
+{% endblock %}

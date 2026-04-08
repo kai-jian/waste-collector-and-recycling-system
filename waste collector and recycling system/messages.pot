@@ -1,0 +1,1450 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-02-06 14:48+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: templates/admin/home_admin.html:7
+msgid ". Here is the community overview."
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:104
+msgid ""
+". Verified entries automatically update the volume and sustainability "
+"metrics."
+msgstr ""
+
+#: templates/waste_collector/profile_waste_collector.html:40
+msgid "Access Level"
+msgstr ""
+
+#: templates/login.html:10
+msgid "Access your waste management dashboard"
+msgstr ""
+
+#: templates/waste_collector/profile_waste_collector.html:33
+msgid "Account Details"
+msgstr ""
+
+#: templates/resident/profile_resident.html:57
+msgid "Account Information"
+msgstr ""
+
+#: templates/resident/profile_resident.html:72
+msgid "Account Status"
+msgstr ""
+
+#: templates/admin/assign_hub.html:14 templates/admin/home_admin.html:98
+#: templates/resident/rewards.html:138
+#: templates/waste_collector/home_collector.html:62
+msgid "Action"
+msgstr ""
+
+#: templates/admin/manage_chat.html:25 templates/admin/manage_news.html:24
+msgid "Actions"
+msgstr ""
+
+#: templates/admin/manage_chat.html:35
+#: templates/resident/profile_resident.html:73
+msgid "Active"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:29
+msgid "Active Pickups"
+msgstr ""
+
+#: templates/resident/terminology.html:29
+msgid ""
+"Activities carried out to keep public areas like streets, parks, and "
+"markets clean, hygienic, and well-maintained."
+msgstr ""
+
+#: templates/admin/manage_faq.html:58
+msgid "Add First FAQ"
+msgstr ""
+
+#: templates/admin/manage_faq.html:18
+msgid "Add New FAQ"
+msgstr ""
+
+#: templates/admin/manage_news.html:12
+msgid "Add New Post"
+msgstr ""
+
+#: templates/resident/redeem_points.html:53
+msgid "Address Required"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:7 templates/admin/home_admin.html:6
+msgid "Admin Dashboard"
+msgstr ""
+
+#: templates/layout.html:143
+msgid "Admin Profile"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:102
+msgid "Administrative Control Center"
+msgstr ""
+
+#: templates/waste_collector/verify_points.html:81
+msgid "All point requests have been verified. Great work!"
+msgstr ""
+
+#: templates/sign_up.html:87
+msgid "Already have an account?"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:62
+msgid "Analyze Reward Impact"
+msgstr ""
+
+#: templates/admin/verify_points.html:23
+#: templates/waste_collector/verify_points.html:61
+msgid "Approve"
+msgstr ""
+
+#: templates/waste_collector/verify_points.html:60
+msgid "Approve this point request?"
+msgstr ""
+
+#: templates/admin/manage_faq.html:43
+msgid "Are you sure you want to delete this FAQ?"
+msgstr ""
+
+#: templates/resident/redeem_points.html:59
+msgid "Are you sure you want to redeem"
+msgstr ""
+
+#: templates/admin/manage_news.html:22
+msgid "Article Summary"
+msgstr ""
+
+#: templates/admin/manage_complaints.html:26 templates/layout.html:81
+msgid "Assign Hub"
+msgstr ""
+
+#: templates/change_language.html:20 templates/change_language.html:32
+#: templates/change_language.html:44 templates/resident/rewards.html:14
+msgid "Available"
+msgstr ""
+
+#: templates/resident/helpline.html:14
+msgid "Available 9am - 5pm"
+msgstr ""
+
+#: templates/resident/profile_resident.html:30
+msgid "Available Points"
+msgstr ""
+
+#: templates/waste_collector/update_complaint_status.html:53
+msgid "Back to Dashboard"
+msgstr ""
+
+#: templates/resident/faq.html:7 templates/resident/live_chat.html:7
+msgid "Back to Helpline"
+msgstr ""
+
+#: templates/change_language.html:52 templates/resident/view_status.html:60
+msgid "Back to Hub"
+msgstr ""
+
+#: templates/resident/faq_detail.html:9
+msgid "Back to List"
+msgstr ""
+
+#: templates/resident/news_detail.html:42
+msgid "Back to News Feed"
+msgstr ""
+
+#: templates/resident/redeem_points.html:7
+msgid "Back to Rewards Hub"
+msgstr ""
+
+#: templates/waste_collector/collector_complaint_detail.html:8
+msgid "Back to Tasks"
+msgstr ""
+
+#: templates/resident/redeem_points.html:28
+msgid ""
+"Before you can redeem items, please add a delivery address to your "
+"profile. This ensures we know where to send your rewards."
+msgstr ""
+
+#: templates/resident/terminology.html:38
+msgid "Bulk Waste"
+msgstr ""
+
+#: templates/resident/news_detail.html:32
+msgid "By"
+msgstr ""
+
+#: templates/waste_collector/collector_complaint_detail.html:63
+msgid "COLLECTION EVIDENCE (PHOTO)"
+msgstr ""
+
+#: templates/waste_collector/collector_complaint_detail.html:43
+msgid "CURRENT STATUS"
+msgstr ""
+
+#: templates/resident/request_points.html:44
+msgid "Cancel"
+msgstr ""
+
+#: templates/resident/make_complaint.html:53
+msgid "Cancel & Go Back"
+msgstr ""
+
+#: templates/resident/edit_profile.html:76
+msgid "Cancel and Return to Profile"
+msgstr ""
+
+#: templates/admin/manage_news.html:23 templates/resident/home_resident.html:63
+msgid "Category"
+msgstr ""
+
+#: templates/admin/manage_chat.html:22
+msgid "Channel Name"
+msgstr ""
+
+#: templates/admin/home_admin.html:74 templates/admin/manage_chat.html:7
+msgid "Chat Channels"
+msgstr ""
+
+#: templates/resident/mailbox.html:42
+msgid "Chat Reply"
+msgstr ""
+
+#: templates/resident/helpline.html:39
+msgid "Chat with us."
+msgstr ""
+
+#: templates/resident/complaint.html:48
+msgid "Check Complaint Status"
+msgstr ""
+
+#: templates/resident/helpline.html:6
+msgid "Choose a channel to get the help you need."
+msgstr ""
+
+#: templates/resident/redeem_points.html:10
+msgid "Choose a reward and we will process your request immediately."
+msgstr ""
+
+#: templates/waste_collector/verify_points.html:43
+msgid "Claimed Weight:"
+msgstr ""
+
+#: templates/waste_collector/update_complaint_status.html:8
+msgid "Click on a card to view full details and update the collection status."
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:7
+msgid "Collector Dashboard"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:104
+msgid "Collector Reports"
+msgstr ""
+
+#: templates/resident/helpline.html:30
+msgid "Common questions."
+msgstr ""
+
+#: templates/resident/home_resident.html:105 templates/resident/news.html:13
+msgid "Community News"
+msgstr ""
+
+#: templates/resident/complaint.html:20
+msgid "Complaint Terminology"
+msgstr ""
+
+#: templates/resident/terminology.html:9
+msgid "Complaint Terminology Guide"
+msgstr ""
+
+#: templates/resident/view_status.html:40
+msgid "Completed"
+msgstr ""
+
+#: templates/waste_collector/collector_complaint_detail.html:48
+msgid "Completed (Work Finished)"
+msgstr ""
+
+#: form.py:60
+msgid "Compliment"
+msgstr ""
+
+#: templates/resident/make_complaint.html:33
+msgid "Confirm Location"
+msgstr ""
+
+#: templates/resident/rewards.html:180
+msgid "Confirm Receipt"
+msgstr ""
+
+#: templates/resident/rewards.html:179
+msgid "Confirm receipt of this item"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:8
+msgid "Control all support channels, contact information, and resident resources."
+msgstr ""
+
+#: templates/resident/make_complaint.html:99
+msgid "Could not get your location. Please pin it manually."
+msgstr ""
+
+#: templates/sign_up.html:82
+msgid "Create Account"
+msgstr ""
+
+#: templates/admin/manage_faq.html:14
+msgid "Create, update, or remove help articles for residents."
+msgstr ""
+
+#: templates/change_language.html:18 templates/change_language.html:30
+#: templates/change_language.html:42
+msgid "Current"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:53
+msgid "Current Assignments"
+msgstr ""
+
+#: templates/admin/manage_faq.html:9 templates/layout.html:71
+msgid "Dashboard"
+msgstr ""
+
+#: templates/resident/home_resident.html:65 templates/resident/rewards.html:60
+msgid "Date"
+msgstr ""
+
+#: templates/resident/rewards.html:135
+msgid "Date Redeemed"
+msgstr ""
+
+#: templates/admin/assign_hub.html:13 templates/resident/view_status.html:18
+msgid "Date Reported"
+msgstr ""
+
+#: templates/admin/manage_faq.html:44 templates/resident/mailbox.html:81
+msgid "Delete"
+msgstr ""
+
+#: templates/admin/manage_chat.html:49
+msgid "Delete this channel?"
+msgstr ""
+
+#: templates/resident/edit_profile.html:53
+#: templates/resident/profile_resident.html:77
+#: templates/resident/rewards.html:136
+msgid "Delivery Address"
+msgstr ""
+
+#: templates/resident/redeem_points.html:27
+msgid "Delivery Address Required"
+msgstr ""
+
+#: templates/admin/manage_chat.html:23 templates/resident/rewards.html:61
+msgid "Description"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:107
+msgid "Detailed Analytics"
+msgstr ""
+
+#: templates/resident/news_detail.html:15
+#: templates/waste_collector/home_collector.html:85
+msgid "Details"
+msgstr ""
+
+#: templates/admin/home_admin.html:65 templates/admin/manage_complaints.html:27
+msgid "Dispatch Center"
+msgstr ""
+
+#: templates/resident/terminology.html:18
+msgid "Domestic"
+msgstr ""
+
+#: templates/resident/request_points.html:7
+msgid "Earn Points"
+msgstr ""
+
+#: templates/resident/rewards.html:75
+msgid "Earned"
+msgstr ""
+
+#: templates/admin/manage_faq.html:37 templates/admin/manage_news.html:63
+#: templates/resident/edit_profile.html:18
+msgid "Edit"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:31
+msgid "Edit Email"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:20
+msgid "Edit Hotline"
+msgstr ""
+
+#: templates/waste_collector/profile_waste_collector.html:51
+msgid "Edit Profile"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:29 templates/admin/manage_users.html:15
+#: templates/resident/edit_profile.html:43 templates/resident/helpline.html:21
+#: templates/waste_collector/profile_waste_collector.html:36
+msgid "Email"
+msgstr ""
+
+#: templates/resident/edit_profile.html:40
+#: templates/resident/profile_resident.html:67
+msgid "Email Address"
+msgstr ""
+
+#: templates/resident/request_points.html:36
+msgid "Estimated Earnings"
+msgstr ""
+
+#: templates/resident/view_status.html:16
+msgid "Evidence"
+msgstr ""
+
+#: templates/resident/helpline.html:29
+msgid "FAQ"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:51
+msgid "FAQs"
+msgstr ""
+
+#: templates/layout.html:51
+msgid "Feedback"
+msgstr ""
+
+#: templates/admin/home_admin.html:68 templates/admin/manage_feedback.html:5
+msgid "Feedback Hub"
+msgstr ""
+
+#: templates/resident/terminology.html:53
+msgid "File a Report Now"
+msgstr ""
+
+#: templates/admin/manage_faq.html:13 templates/resident/faq.html:11
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:12
+msgid "GPS:"
+msgstr ""
+
+#: templates/resident/make_complaint.html:35
+msgid "Get My Location"
+msgstr ""
+
+#: templates/resident/feedback.html:6
+msgid "Give Us Feedback"
+msgstr ""
+
+#: templates/resident/mailbox.html:58 templates/resident/mailbox.html:65
+msgid "Go to conversation"
+msgstr ""
+
+#: templates/resident/home_resident.html:11
+msgid "Hello,"
+msgstr ""
+
+#: templates/sign_up.html:8
+msgid "Help keep our city clean and sustainable."
+msgstr ""
+
+#: templates/layout.html:52
+msgid "Helpline"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:7
+msgid "Helpline Management Hub"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:8
+msgid "Here is your pickup schedule."
+msgstr ""
+
+#: templates/layout.html:42
+msgid "Home"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:18 templates/resident/helpline.html:13
+msgid "Hotline"
+msgstr ""
+
+#: templates/resident/redeem_points.html:80
+msgid "How it works:"
+msgstr ""
+
+#: templates/admin/assign_hub.html:10
+msgid "ID"
+msgstr ""
+
+#: templates/resident/faq.html:38
+msgid "If you can't find your answer here, contact us via Live Chat or Hotline."
+msgstr ""
+
+#: templates/resident/view_status.html:38
+msgid "In Action"
+msgstr ""
+
+#: templates/waste_collector/collector_complaint_detail.html:47
+msgid "In Action (Still Working)"
+msgstr ""
+
+#: templates/resident/home_resident.html:38
+msgid "In Progress"
+msgstr ""
+
+#: templates/admin/manage_chat.html:37
+msgid "Inactive"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:12
+msgid "Initializing..."
+msgstr ""
+
+#: templates/resident/rewards.html:134
+msgid "Item"
+msgstr ""
+
+#: templates/waste_collector/profile_waste_collector.html:25
+msgid "Jobs Done"
+msgstr ""
+
+#: templates/sign_up.html:7
+msgid "Join EcoClean"
+msgstr ""
+
+#: templates/waste_collector/profile_waste_collector.html:29
+msgid "KG Collected"
+msgstr ""
+
+#: templates/change_language.html:9
+msgid "Language Hub"
+msgstr ""
+
+#: routes.py:537
+msgid "Language changed to"
+msgstr ""
+
+#: templates/resident/terminology.html:39
+msgid ""
+"Large items that cannot be disposed of through regular collection, such "
+"as furniture, mattresses, or large appliances."
+msgstr ""
+
+#: templates/resident/news.html:14
+msgid "Latest updates and announcements from the EcoClean team."
+msgstr ""
+
+#: templates/resident/complaint.html:21
+msgid "Learn the difference between Domestic, Public, and Bulk waste."
+msgstr ""
+
+#: templates/admin/manage_helpline.html:40 templates/resident/helpline.html:38
+msgid "Live Chat"
+msgstr ""
+
+#: templates/resident/live_chat.html:11
+msgid "Live Chat Support"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:30
+msgid "Live Volume"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:8
+msgid "Live overview of city-wide waste collection and collector performance."
+msgstr ""
+
+#: templates/admin/manage_complaints.html:69
+msgid "Location"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:60
+msgid "Location Coords"
+msgstr ""
+
+#: templates/sign_up.html:87
+msgid "Log In"
+msgstr ""
+
+#: templates/layout.html:160 templates/login.html:27
+msgid "Login"
+msgstr ""
+
+#: templates/layout.html:154
+#: templates/waste_collector/profile_waste_collector.html:62
+msgid "Logout"
+msgstr ""
+
+#: templates/layout.html:118
+msgid "Mail"
+msgstr ""
+
+#: routes.py:515
+msgid "Mail deleted."
+msgstr ""
+
+#: templates/resident/complaint.html:34
+msgid "Make a New Report"
+msgstr ""
+
+#: templates/admin/assign_hub.html:30
+msgid "Manage & Assign"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:42
+msgid "Manage Chat"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:53
+msgid "Manage FAQ"
+msgstr ""
+
+#: templates/admin/manage_faq.html:10
+msgid "Manage FAQs"
+msgstr ""
+
+#: templates/layout.html:86
+msgid "Manage Helpline"
+msgstr ""
+
+#: templates/layout.html:76
+msgid "Manage News"
+msgstr ""
+
+#: templates/admin/home_admin.html:71
+msgid "Manage News Hub"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:41
+msgid "Manage active chat channels."
+msgstr ""
+
+#: templates/admin/manage_helpline.html:52
+msgid "Manage common questions."
+msgstr ""
+
+#: templates/admin/manage_news.html:9
+msgid "Manage community announcements and alerts"
+msgstr ""
+
+#: templates/admin/manage_chat.html:8
+msgid "Manage your live support channels for residents."
+msgstr ""
+
+#: templates/admin/home_admin.html:62
+msgid "Management Tools"
+msgstr ""
+
+#: templates/resident/mailbox.html:74
+msgid "Mark as read"
+msgstr ""
+
+#: templates/waste_collector/verify_points.html:38
+msgid "Material Type:"
+msgstr ""
+
+#: templates/admin/verify_points.html:14
+msgid "Material:"
+msgstr ""
+
+#: templates/resident/profile_resident.html:20
+msgid "Member"
+msgstr ""
+
+#: templates/resident/profile_resident.html:41
+msgid "Membership Tier"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:85
+msgid "Monitor Active Routes"
+msgstr ""
+
+#: templates/resident/view_status.html:5
+msgid "My Complaint Status"
+msgstr ""
+
+#: templates/resident/mailbox.html:6
+msgid "My Mail"
+msgstr ""
+
+#: templates/layout.html:139 templates/layout.html:147
+msgid "My Profile"
+msgstr ""
+
+#: templates/resident/home_resident.html:53
+msgid "My Recent Activity"
+msgstr ""
+
+#: form.py:58
+msgid "Nature of Feedback"
+msgstr ""
+
+#: templates/resident/redeem_points.html:68
+msgid "Need"
+msgstr ""
+
+#: templates/resident/terminology.html:41
+msgid "Needs Request & Schedule"
+msgstr ""
+
+#: templates/resident/mailbox.html:35
+msgid "New"
+msgstr ""
+
+#: templates/admin/manage_chat.html:12
+msgid "New Channel"
+msgstr ""
+
+#: templates/resident/home_resident.html:14
+#: templates/resident/view_status.html:7
+msgid "New Report"
+msgstr ""
+
+#: templates/resident/rewards.html:36
+msgid "New Request"
+msgstr ""
+
+#: templates/login.html:33
+msgid "New here?"
+msgstr ""
+
+#: templates/layout.html:48 templates/resident/news_detail.html:14
+msgid "News"
+msgstr ""
+
+#: templates/admin/manage_news.html:7 templates/layout.html:91
+msgid "News Hub"
+msgstr ""
+
+#: templates/waste_collector/update_complaint_status.html:51
+msgid "No Assigned Complaints"
+msgstr ""
+
+#: templates/admin/manage_faq.html:56
+msgid "No FAQs found"
+msgstr ""
+
+#: templates/resident/faq.html:32
+msgid "No FAQs have been posted yet. Please check back later!"
+msgstr ""
+
+#: templates/waste_collector/verify_points.html:80
+msgid "No Pending Requests"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:96
+msgid "No active tasks assigned!"
+msgstr ""
+
+#: templates/resident/home_resident.html:122
+msgid "No announcements today."
+msgstr ""
+
+#: templates/admin/manage_chat.html:57
+msgid "No channels created yet."
+msgstr ""
+
+#: templates/admin/manage_feedback.html:34
+msgid "No feedback has been submitted yet."
+msgstr ""
+
+#: templates/resident/live_chat.html:39
+msgid ""
+"No live chat channels are currently active. Please try again later or "
+"contact our hotline."
+msgstr ""
+
+#: templates/resident/mailbox.html:97
+msgid "No mail yet"
+msgstr ""
+
+#: templates/resident/news.html:64
+msgid "No news posts available at the moment."
+msgstr ""
+
+#: templates/admin/verify_points.html:32
+msgid "No pending point requests to verify."
+msgstr ""
+
+#: templates/admin/manage_complaints.html:40
+msgid "No photo available"
+msgstr ""
+
+#: templates/waste_collector/collector_complaint_detail.html:19
+msgid "No photo provided"
+msgstr ""
+
+#: templates/resident/rewards.html:113
+msgid "No point history found."
+msgstr ""
+
+#: templates/resident/rewards.html:195
+msgid "No redeemed items yet. Visit the store to claim your first reward!"
+msgstr ""
+
+#: templates/admin/manage_users.html:47
+msgid "No residents registered yet."
+msgstr ""
+
+#: templates/resident/redeem_points.html:65
+msgid "Not Enough Points"
+msgstr ""
+
+#: templates/resident/profile_resident.html:82
+msgid "Not set"
+msgstr ""
+
+#: templates/resident/redeem_points.html:80
+msgid ""
+"Once you click redeem, your points are deducted instantly. Physical items"
+" will be delivered to your address, and digital vouchers will be sent to "
+"your email."
+msgstr ""
+
+#: templates/waste_collector/profile_waste_collector.html:45
+msgid "Online"
+msgstr ""
+
+#: templates/resident/request_points.html:32
+msgid "Only PNG files are accepted"
+msgstr ""
+
+#: templates/sign_up.html:48
+msgid "Optional: Upload a JPG or PNG profile picture."
+msgstr ""
+
+#: templates/resident/rewards.html:20 templates/resident/view_status.html:36
+msgid "Pending"
+msgstr ""
+
+#: templates/admin/assign_hub.html:4
+msgid "Pending Assignments"
+msgstr ""
+
+#: templates/resident/home_resident.html:31
+msgid "Pending Complaints"
+msgstr ""
+
+#: templates/admin/home_admin.html:29
+msgid "Pending Dispatch"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:76
+msgid "Performance"
+msgstr ""
+
+#: templates/admin/manage_news.html:68
+msgid "Permanent delete: are you sure?"
+msgstr ""
+
+#: templates/resident/redeem_points.html:52
+msgid "Please add a delivery address first"
+msgstr ""
+
+#: templates/resident/make_complaint.html:8
+msgid "Please provide details and confirm the location for collection."
+msgstr ""
+
+#: templates/resident/rewards.html:53
+msgid "Point History"
+msgstr ""
+
+#: templates/admin/manage_users.html:16
+#: templates/resident/redeem_points.html:47 templates/resident/rewards.html:63
+#: templates/waste_collector/verify_points.html:52
+msgid "Points"
+msgstr ""
+
+#: templates/resident/news.html:20
+msgid "Post Update"
+msgstr ""
+
+#: templates/admin/manage_news.html:21
+msgid "Posted Date"
+msgstr ""
+
+#: templates/resident/news.html:55
+msgid "Posted by"
+msgstr ""
+
+#: templates/admin/verify_points.html:18
+msgid "Potential Points:"
+msgstr ""
+
+#: templates/waste_collector/collector_complaint_detail.html:69
+msgid "Previous evidence uploaded. Upload again to replace."
+msgstr ""
+
+#: templates/resident/rewards.html:165
+msgid "Processing"
+msgstr ""
+
+#: templates/resident/edit_profile.html:18
+msgid "Profile"
+msgstr ""
+
+#: templates/resident/complaint.html:58
+msgid ""
+"Providing clear photos and accurate map markers helps our team respond "
+"faster."
+msgstr ""
+
+#: templates/resident/terminology.html:28
+msgid "Public Cleaning"
+msgstr ""
+
+#: templates/resident/news.html:46
+msgid "Read Full Story"
+msgstr ""
+
+#: templates/resident/terminology.html:50
+msgid "Ready to report an issue?"
+msgstr ""
+
+#: templates/resident/rewards.html:161
+msgid "Received"
+msgstr ""
+
+#: templates/resident/home_resident.html:128
+msgid "Recent Community Activity"
+msgstr ""
+
+#: templates/admin/home_admin.html:88
+msgid "Recent Urgent Reports"
+msgstr ""
+
+#: templates/resident/rewards.html:34
+msgid "Recycle & Earn"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:55
+msgid "Recycling Rate"
+msgstr ""
+
+#: templates/resident/redeem_points.html:60
+msgid "Redeem Now"
+msgstr ""
+
+#: templates/resident/redeem_points.html:9
+msgid "Redeem Points"
+msgstr ""
+
+#: templates/resident/rewards.html:77
+msgid "Redeemed"
+msgstr ""
+
+#: templates/resident/rewards.html:126
+msgid "Redeemed Items"
+msgstr ""
+
+#: templates/resident/mailbox.html:40
+msgid "Redemption"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:108
+msgid "Refresh Data"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:42
+msgid "Refresh GPS"
+msgstr ""
+
+#: templates/layout.html:161
+msgid "Register"
+msgstr ""
+
+#: templates/admin/verify_points.html:25
+#: templates/waste_collector/verify_points.html:68
+msgid "Reject"
+msgstr ""
+
+#: templates/waste_collector/verify_points.html:67
+msgid "Reject this point request?"
+msgstr ""
+
+#: templates/resident/mailbox.html:59 templates/resident/mailbox.html:66
+msgid "Reply"
+msgstr ""
+
+#: templates/resident/helpline.html:22
+msgid "Reply within 24h"
+msgstr ""
+
+#: templates/resident/home_resident.html:62
+msgid "Report"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:59
+msgid "Report ID"
+msgstr ""
+
+#: templates/resident/make_complaint.html:7
+msgid "Report Waste"
+msgstr ""
+
+#: templates/waste_collector/update_complaint_status.html:33
+msgid "Reported:"
+msgstr ""
+
+#: templates/admin/manage_complaints.html:60
+msgid "Reporter"
+msgstr ""
+
+#: templates/admin/home_admin.html:95
+msgid "Resident"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:104
+msgid "Resident Rewards"
+msgstr ""
+
+#: templates/admin/home_admin.html:18 templates/admin/manage_users.html:6
+msgid "Residents"
+msgstr ""
+
+#: templates/resident/home_resident.html:45
+msgid "Resolved"
+msgstr ""
+
+#: templates/admin/home_admin.html:51
+msgid "Resolved Cases"
+msgstr ""
+
+#: templates/admin/manage_feedback.html:6
+msgid "Review and manage feedback submitted by residents."
+msgstr ""
+
+#: templates/waste_collector/verify_points.html:7
+msgid ""
+"Review and verify the waste submissions from residents. Ensure the weight"
+" and material type match what is claimed."
+msgstr ""
+
+#: templates/layout.html:50
+msgid "Rewards"
+msgstr ""
+
+#: templates/resident/rewards.html:6
+msgid "Rewards Hub"
+msgstr ""
+
+#: templates/admin/manage_users.html:18
+msgid "Role"
+msgstr ""
+
+#: templates/resident/terminology.html:19
+msgid ""
+"Rubbish produced from daily activities in homes. Includes food scraps, "
+"paper, plastic, glass, and metal items thrown away daily."
+msgstr ""
+
+#: templates/resident/live_chat.html:15
+msgid "Select a channel to start a conversation with our support team."
+msgstr ""
+
+#: templates/resident/complaint.html:8
+msgid ""
+"Select an option below to manage your waste reports or learn about "
+"categories."
+msgstr ""
+
+#: templates/change_language.html:10
+msgid "Select your preferred language."
+msgstr ""
+
+#: templates/sign_up.html:42
+msgid "Select your primary role in the system."
+msgstr ""
+
+#: form.py:70
+msgid "Send Feedback"
+msgstr ""
+
+#: form.py:61
+msgid "Service Issue"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:30
+msgid "Set the official support address."
+msgstr ""
+
+#: templates/resident/feedback.html:30
+msgid "Share your thoughts here..."
+msgstr ""
+
+#: templates/resident/rewards.html:169
+msgid "Shipped"
+msgstr ""
+
+#: templates/login.html:33
+msgid "Sign Up Now"
+msgstr ""
+
+#: templates/resident/rewards.html:44
+msgid "Spend Points"
+msgstr ""
+
+#: templates/resident/helpline.html:40 templates/resident/live_chat.html:29
+msgid "Start Chat"
+msgstr ""
+
+#: templates/admin/manage_faq.html:57
+msgid "Start by adding your first question for the residents."
+msgstr ""
+
+#: templates/admin/assign_hub.html:12 templates/admin/home_admin.html:97
+#: templates/admin/manage_chat.html:24 templates/resident/home_resident.html:64
+#: templates/resident/rewards.html:64 templates/resident/rewards.html:137
+#: templates/resident/view_status.html:19
+#: templates/waste_collector/profile_waste_collector.html:44
+msgid "Status"
+msgstr ""
+
+#: templates/admin/manage_complaints.html:47
+msgid "Status:"
+msgstr ""
+
+#: templates/resident/faq.html:37
+msgid "Still have questions?"
+msgstr ""
+
+#: form.py:64
+msgid "Subject"
+msgstr ""
+
+#: templates/resident/rewards.html:35
+msgid "Submit a photo of your sorted waste to earn new points."
+msgstr ""
+
+#: templates/resident/request_points.html:8
+msgid "Submit your waste weight to contribute to city recycling data."
+msgstr ""
+
+#: form.py:59
+msgid "Suggestion"
+msgstr ""
+
+#: templates/resident/helpline.html:5
+msgid "Support Center"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:16
+msgid "System Live"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:15
+msgid "System Online"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:99
+msgid "System Status: Operational"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:78
+msgid "Task Completion"
+msgstr ""
+
+#: templates/waste_collector/profile_waste_collector.html:57
+msgid "Tasks"
+msgstr ""
+
+#: templates/resident/edit_profile.html:61
+msgid ""
+"This address will be used for reward delivery. Or click above to auto-"
+"detect your current location."
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:104
+msgid "This dashboard aggregates real-time data from"
+msgstr ""
+
+#: templates/admin/manage_users.html:17
+msgid "Tier"
+msgstr ""
+
+#: templates/resident/home_resident.html:12
+msgid ""
+"Together, we can keep our neighborhood clean and sustainable. Have you "
+"spotted any waste issues today?"
+msgstr ""
+
+#: templates/resident/profile_resident.html:49
+msgid "Total Actions"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:32
+msgid "Total Waste Volume"
+msgstr ""
+
+#: templates/resident/rewards.html:7
+msgid "Track your recycling impact and claim your rewards."
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:38
+msgid "Tracking Status"
+msgstr ""
+
+#: templates/admin/assign_hub.html:11 templates/admin/home_admin.html:96
+#: templates/resident/rewards.html:62 templates/resident/view_status.html:17
+msgid "Type"
+msgstr ""
+
+#: templates/admin/home_admin.html:40
+msgid "Unresponded Messages"
+msgstr ""
+
+#: templates/resident/profile_resident.html:90
+msgid "Update Account Settings"
+msgstr ""
+
+#: templates/resident/edit_profile.html:72
+#: templates/resident/redeem_points.html:32
+msgid "Update Profile"
+msgstr ""
+
+#: templates/layout.html:58
+msgid "Update Status"
+msgstr ""
+
+#: templates/waste_collector/collector_complaint_detail.html:77
+msgid "Update Task & Save Progress"
+msgstr ""
+
+#: templates/waste_collector/collector_complaint_detail.html:37
+msgid "Update Work Progress"
+msgstr ""
+
+#: templates/admin/manage_helpline.html:19
+msgid "Update the emergency contact number."
+msgstr ""
+
+#: templates/resident/edit_profile.html:20
+msgid "Update your account credentials below"
+msgstr ""
+
+#: templates/resident/complaint.html:35
+msgid "Upload a photo and pin the location of waste on the map."
+msgstr ""
+
+#: templates/waste_collector/collector_complaint_detail.html:72
+msgid "Upload photo of the cleared area as proof."
+msgstr ""
+
+#: templates/resident/edit_profile.html:59
+msgid "Use My Location"
+msgstr ""
+
+#: templates/resident/rewards.html:45
+msgid "Use your available balance to redeem vouchers and eco-prizes."
+msgstr ""
+
+#: templates/admin/manage_users.html:14
+msgid "User"
+msgstr ""
+
+#: templates/admin/home_admin.html:77 templates/admin/manage_users.html:5
+msgid "User Database"
+msgstr ""
+
+#: templates/resident/edit_profile.html:27
+#: templates/resident/edit_profile.html:30
+#: templates/resident/profile_resident.html:62
+msgid "Username"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:53
+msgid "Verified"
+msgstr ""
+
+#: templates/waste_collector/profile_waste_collector.html:18
+msgid "Verified Collector"
+msgstr ""
+
+#: templates/admin/verify_points.html:4
+#: templates/waste_collector/verify_points.html:6
+msgid "Verify Point Requests"
+msgstr ""
+
+#: templates/layout.html:63
+msgid "Verify Points"
+msgstr ""
+
+#: templates/resident/home_resident.html:54
+msgid "View All"
+msgstr ""
+
+#: templates/admin/home_admin.html:89
+msgid "View All Activity"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:39
+msgid "View Detailed Logs"
+msgstr ""
+
+#: templates/admin/manage_feedback.html:26
+#: templates/waste_collector/update_complaint_status.html:38
+msgid "View Details"
+msgstr ""
+
+#: templates/resident/helpline.html:31
+msgid "View FAQ"
+msgstr ""
+
+#: templates/resident/mailbox.html:7
+msgid "View all your notifications and messages"
+msgstr ""
+
+#: templates/resident/complaint.html:49
+msgid "View your history and track progress of your submissions."
+msgstr ""
+
+#: templates/resident/rewards.html:46
+msgid "Visit Store"
+msgstr ""
+
+#: templates/waste_collector/collector_complaint_detail.html:54
+msgid "WASTE VOLUME (KG)"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:39
+msgid "Waiting for location permission..."
+msgstr ""
+
+#: templates/waste_collector/profile_waste_collector.html:41
+msgid "Waste Collector"
+msgstr ""
+
+#: templates/layout.html:49
+msgid "Waste Complaints"
+msgstr ""
+
+#: templates/resident/complaint.html:7
+msgid "Waste Reporting Center"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:61
+msgid "Waste Type"
+msgstr ""
+
+#: templates/resident/home_resident.html:138
+msgid "Waste reported"
+msgstr ""
+
+#: templates/resident/feedback.html:7
+msgid "We value your suggestions to make EcoClean better."
+msgstr ""
+
+#: templates/admin/verify_points.html:15
+msgid "Weight:"
+msgstr ""
+
+#: templates/login.html:9
+msgid "Welcome Back"
+msgstr ""
+
+#: templates/waste_collector/home_collector.html:8
+msgid "Welcome back,"
+msgstr ""
+
+#: templates/admin/home_admin.html:7
+msgid "Welcome back, "
+msgstr ""
+
+#: templates/resident/feedback.html:22
+msgid "What is this about?"
+msgstr ""
+
+#: templates/waste_collector/update_complaint_status.html:52
+msgid "You are all caught up! Check back later for new tasks."
+msgstr ""
+
+#: templates/resident/make_complaint.html:44
+msgid "You can drag the pin to adjust the exact spot."
+msgstr ""
+
+#: templates/resident/view_status.html:48
+msgid "You haven't submitted any reports yet."
+msgstr ""
+
+#: templates/resident/mailbox.html:98
+msgid ""
+"You will receive notifications here when you redeem rewards or receive "
+"chat replies."
+msgstr ""
+
+#: templates/waste_collector/update_complaint_status.html:7
+msgid "Your Assignments"
+msgstr ""
+
+#: templates/resident/redeem_points.html:15
+msgid "Your Balance"
+msgstr ""
+
+#: form.py:65
+msgid "Your Message"
+msgstr ""
+
+#: form.py:67
+msgid "Your message is too short."
+msgstr ""
+
+#: templates/resident/terminology.html:51
+msgid "Your reports help us keep the community clean and organized."
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:104
+msgid "and"
+msgstr ""
+
+#: templates/resident/redeem_points.html:59
+msgid "for"
+msgstr ""
+
+#: templates/admin/dashboard_summary.html:35
+#: templates/admin/verify_points.html:15
+msgid "kg"
+msgstr ""
+
+#: templates/resident/redeem_points.html:68
+msgid "more points"
+msgstr ""
+
+#: templates/resident/redeem_points.html:59
+msgid "points?"
+msgstr ""
+
+#: templates/admin/manage_users.html:33
+#: templates/resident/redeem_points.html:16
+#: templates/resident/request_points.html:38 templates/resident/rewards.html:15
+#: templates/resident/rewards.html:21
+msgid "pts"
+msgstr ""
+
+#: templates/resident/mailbox.html:13
+msgid "unread message(s)"
+msgstr ""
+

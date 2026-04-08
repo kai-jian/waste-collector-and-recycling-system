@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <a href="{{ url_for('main.rewards') }}" class="text-decoration-none text-muted mb-2 d-inline-block">
+                <i class="bi bi-arrow-left"></i> {{ _('Back to Rewards Hub') }}
+            </a>
+            <h1 class="display-5">{{ _('Redeem Points') }}</h1>
+            <p class="text-muted">{{ _('Choose a reward and we will process your request immediately.') }}</p>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-light border-success shadow-sm">
+                <div class="card-body text-center py-3">
+                    <h6 class="text-uppercase mb-1 small text-success">{{ _('Your Balance') }}</h6>
+                    <h2 class="mb-0"><strong>{{ current_user.points }}</strong> <small>{{ _('pts') }}</small></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if not has_address %}
+    <div class="alert alert-warning border-0 shadow-sm alert-dismissible fade show" role="alert">
+        <div class="d-flex align-items-center">
+            <i class="bi bi-exclamation-triangle me-2" style="font-size: 1.2rem;"></i>
+            <div>
+                <strong>{{ _('Delivery Address Required') }}</strong><br>
+                <small>{{ _('Before you can redeem items, please add a delivery address to your profile. This ensures we know where to send your rewards.') }}</small>
+            </div>
+        </div>
+        <a href="{{ url_for('main.edit_profile') }}" class="btn btn-sm btn-warning mt-2">
+            <i class="bi bi-pencil"></i> {{ _('Update Profile') }}
+        </a>
+    </div>
+    {% endif %}
+
+    <div class="row">
+        {% for prize in prizes %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="bi {{ prize.icon }} display-4 {{ prize.color }}"></i>
+                    </div>
+                    
+                    <h4 class="card-title">{{ prize.name }}</h4>
+                    <p class="h5 text-dark mb-3"><strong>{{ prize.cost }}</strong> <span class="small text-muted">{{ _('Points') }}</span></p>
+                    
+                    <hr>
+
+                    {% if not has_address %}
+                        <button class="btn btn-secondary btn-lg w-100" disabled title="{{ _('Please add a delivery address first') }}">
+                            {{ _('Address Required') }}
+                        </button>
+                    {% elif current_user.points >= prize.cost %}
+                        <form action="{{ url_for('main.confirm_redemption', prize_id=prize.id) }}" method="POST">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <button type="submit" class="btn btn-success btn-lg w-100 shadow-sm" 
+                                    onclick="return confirm('{{ _('Are you sure you want to redeem') }} {{ prize.name }} {{ _('for') }} {{ prize.cost }} {{ _('points?') }}')">
+                                {{ _('Redeem Now') }}
+                            </button>
+                        </form>
+                    {% else %}
+                        <button class="btn btn-secondary btn-lg w-100" disabled>
+                            {{ _('Not Enough Points') }}
+                        </button>
+                        <div class="mt-2 small text-danger">
+                            {{ _('Need') }} {{ prize.cost - current_user.points }} {{ _('more points') }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <div class="alert alert-warning border-0 shadow-sm">
+                <strong>{{ _('How it works:') }}</strong> {{ _('Once you click redeem, your points are deducted instantly. Physical items will be delivered to your address, and digital vouchers will be sent to your email.') }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

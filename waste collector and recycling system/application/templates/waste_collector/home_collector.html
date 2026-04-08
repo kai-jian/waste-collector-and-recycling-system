@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row align-items-center mb-4">
+        <div class="col-md-8">
+            <h2 class="fw-bold mb-1">{{ _('Collector Dashboard') }}</h2>
+            <p class="text-muted">{{ _('Welcome back,') }} <strong>{{ current_user.username }}</strong>. {{ _('Here is your pickup schedule.') }}</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <div id="location-status" class="badge bg-secondary p-2 px-3 rounded-pill">
+                <i class="bi bi-geo-fill me-2 small"></i> {{ _('GPS:') }} {{ _('Initializing...') }}
+            </div>
+            <div class="badge bg-success-custom p-2 px-3 rounded-pill ms-2">
+                <i class="bi bi-circle-fill me-2 small"></i> {{ _('System Online') }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                <div class="d-flex align-items-center">
+                    <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-3">
+                        <i class="bi bi-truck text-warning fs-3"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bold mb-0">{{ tasks|length }}</h3>
+                        <p class="text-muted mb-0 small text-uppercase fw-bold">{{ _('Active Pickups') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-dark text-white">
+                <div class="row align-items-center">
+                    <div class="col-sm-8">
+                        <h5 class="fw-bold mb-1">{{ _('Tracking Status') }}</h5>
+                        <p class="mb-0 opacity-75 small" id="gps-coordinates">{{ _('Waiting for location permission...') }}</p>
+                    </div>
+                    <div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
+                        <button onclick="getLocation()" class="btn btn-outline-light btn-sm rounded-pill">{{ _('Refresh GPS') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-header bg-white border-0 py-3 px-4 d-flex justify-content-between align-items-center">
+                    <h5 class="fw-bold mb-0">{{ _('Current Assignments') }}</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="ps-4 border-0">{{ _('Report ID') }}</th>
+                                <th class="border-0">{{ _('Location Coords') }}</th>
+                                <th class="border-0">{{ _('Waste Type') }}</th>
+                                <th class="border-0 text-center">{{ _('Action') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if tasks %}
+                                {% for task in tasks %}
+                                <tr>
+                                    <td class="ps-4">
+                                        <span class="fw-bold">#{{ task.id }}</span>
+                                        <div class="small text-muted">{{ task.date_posted.strftime('%d %b, %H:%M') }}</div>
+                                    </td>
+                                    <td>
+                                        <i class="bi bi-geo-alt-fill text-danger me-1"></i>
+                                        <span class="font-monospace small">{{ task.latitude }}, {{ task.longitude }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-soft-dark text-dark border rounded-pill px-3">
+                                            {{ task.type }}
+                                        </span>
+                                    </td>
+                                    <td class="text-center pe-4">
+                                        <a href="{{ url_for('main.collector_complaint_detail', complaint_id=task.id) }}" 
+                                             class="btn btn-sm bg-success-custom text-white rounded-pill px-4 shadow-sm">
+                                            {{ _('Details') }}
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="4" class="text-center py-5">
+                                        <div class="mb-3">
+                                            <i class="bi bi-clipboard2-check text-muted" style="font-size: 3rem;"></i>
+                                        </div>
+                                        <h6 class="text-muted">{{ _('No active tasks assigned!') }}</h6>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function getLocation() {
+        const statusDiv = document.getElementById('location-status');
+        const coordText = document.getElementById('gps-coordinates');
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+
+                    // Update UI
+                    statusDiv.classList.replace('bg-secondary', 'bg-success');
+                    statusDiv.innerHTML = '<i class="bi bi-geo-fill me-2 small"></i> GPS: Active';
+                    coordText.innerText = `Last Ping: ${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+
+                    // Send to Server
+                    fetch("{{ url_for('main.update_location') }}", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRFToken": "{{ csrf_token() }}"
+                        },
+                        body: JSON.stringify({
+                            latitude: lat,
+                            longitude: lon
+                        })
+                    }).then(response => {
+                        if (!response.ok) console.error("Location update failed.");
+                    });
+                },
+                (error) => {
+                    statusDiv.classList.replace('bg-secondary', 'bg-danger');
+                    statusDiv.innerHTML = '<i class="bi bi-geo-off me-2 small"></i> GPS: Disabled';
+                    coordText.innerText = "Error: Please enable location services.";
+                }
+            );
+        }
+    }
+
+    // Ping location on page load
+    window.onload = getLocation;
+</script>
+
+<style>
+    .bg-success-custom { background-color: #2ecc71 !important; }
+    .text-success-custom { color: #2ecc71 !important; }
+    .bg-soft-dark { background-color: rgba(33, 37, 41, 0.05); }
+    .table thead th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+</style>
+{% endblock %}

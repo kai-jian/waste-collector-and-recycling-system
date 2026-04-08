@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4 align-items-center">
+        <div class="col-md-6">
+            <h2 class="fw-bold">{{ _('Chat Channels') }}</h2>
+            <p class="text-muted">{{ _('Manage your live support channels for residents.') }}</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+            <a href="{{ url_for('main.edit_chat') }}" class="btn bg-success-custom px-4 rounded-3 fw-bold">
+                <i class="bi bi-plus-lg me-2"></i>{{ _('New Channel') }}
+            </a>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        <th class="ps-4">{{ _('Channel Name') }}</th>
+                        <th>{{ _('Description') }}</th>
+                        <th>{{ _('Status') }}</th>
+                        <th class="text-end pe-4">{{ _('Actions') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for channel in channels %}
+                    <tr>
+                        <td class="ps-4 fw-bold">{{ channel.name }}</td>
+                        <td class="text-muted">{{ channel.description or 'No description' }}</td>
+                        <td>
+                            {% if channel.is_active %}
+                                <span class="badge bg-success-light text-success rounded-pill px-3">{{ _('Active') }}</span>
+                            {% else %}
+                                <span class="badge bg-secondary-light text-secondary rounded-pill px-3">{{ _('Inactive') }}</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-end pe-4">
+                            <a href="{{ url_for('main.admin_chat_room', channel_id=channel.id) }}" class="btn btn-sm btn-outline-info rounded-3 me-2" title="View Messages">
+                                <i class="bi bi-chat-dots"></i>
+                            </a>
+                            <a href="{{ url_for('main.edit_chat', id=channel.id) }}" class="btn btn-sm btn-outline-primary rounded-3 me-2">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <form action="{{ url_for('main.delete_chat', id=channel.id) }}" method="POST" class="d-inline">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                <button type="submit" class="btn btn-sm btn-outline-danger rounded-3" onclick="return confirm('{{ _('Delete this channel?') }}')">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center py-5 text-muted">{{ _('No channels created yet.') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

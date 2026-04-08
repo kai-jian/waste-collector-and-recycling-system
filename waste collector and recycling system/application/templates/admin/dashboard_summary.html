@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h2 class="fw-bold text-dark">{{ _('Admin Dashboard') }}</h2>
+            <p class="text-muted">{{ _('Live overview of city-wide waste collection and collector performance.') }}</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <div class="badge bg-white shadow-sm text-dark p-3 rounded-4 border">
+                <i class="bi bi-clock-history me-2 text-primary"></i>
+                <span>{{ current_date|default("February 2026") }}</span>
+            </div>
+            <div class="small text-muted mt-2">
+                <i class="bi bi-circle-fill text-success me-1" style="font-size: 8px;"></i> {{ _('System Live') }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 h-100 transition-hover">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="bg-soft-primary p-3 rounded-3">
+                            <i class="bi bi-trash3-fill text-primary fs-4"></i>
+                        </div>
+                        <span class="text-primary small fw-bold mt-1">{{ _('Live Volume') }}</span>
+                    </div>
+                    <h6 class="text-muted text-uppercase small fw-bold">{{ _('Total Waste Volume') }}</h6>
+                    <h2 class="fw-bold mb-3">
+                        {{ "{:,.1f}".format(stats.total_volume|default(0)) }} 
+                        <span class="fs-6 fw-normal text-muted">{{ _('kg') }}</span>
+                    </h2>
+                    <div class="border-top pt-3">
+                        <a href="{{ url_for('main.waste_volume') }}" class="btn btn-sm btn-link text-primary p-0 text-decoration-none fw-bold">
+                            {{ _('View Detailed Logs') }} <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 h-100 transition-hover">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="bg-soft-success p-3 rounded-3">
+                            <i class="bi bi-recycle text-success fs-4"></i>
+                        </div>
+                        <span class="text-success small fw-bold mt-1"><i class="bi bi-patch-check"></i> {{ _('Verified') }}</span>
+                    </div>
+                    <h6 class="text-muted text-uppercase small fw-bold">{{ _('Recycling Rate') }}</h6>
+                    <h2 class="fw-bold mb-3">{{ stats.recycling_rate|default(0) }} <span class="fs-6 fw-normal">%</span></h2>
+                    <div class="progress mb-3" style="height: 6px;">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ stats.recycling_rate|default(0) }}%"></div>
+                    </div>
+                    <div class="border-top pt-3">
+                        <a href="{{ url_for('main.recycling_rates') }}" class="btn btn-sm btn-link text-success p-0 text-decoration-none fw-bold">
+                            {{ _('Analyze Reward Impact') }} <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 h-100 transition-hover">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="bg-soft-warning p-3 rounded-3">
+                            <i class="bi bi-truck text-warning fs-4"></i>
+                        </div>
+                        <span class="text-muted small mt-1">{{ _('Performance') }}</span>
+                    </div>
+                    <h6 class="text-muted text-uppercase small fw-bold">{{ _('Task Completion') }}</h6>
+                    <h2 class="fw-bold mb-3">{{ stats.completion_percent|default(0) }} <span class="fs-6 fw-normal">%</span></h2>
+                    <div class="progress mb-3" style="height: 6px;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{ stats.completion_percent|default(0) }}%"></div>
+                    </div>
+                    <div class="border-top pt-3">
+                        <a href="{{ url_for('main.collection_progress') }}" class="btn btn-sm btn-link text-warning p-0 text-decoration-none fw-bold">
+                            {{ _('Monitor Active Routes') }} <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="p-5 bg-white rounded-4 shadow-sm text-center border">
+                <div class="mb-3">
+                    <span class="badge bg-light text-primary border px-3 py-2 rounded-pill">
+                        <i class="bi bi-database-check me-2"></i>{{ _('System Status: Operational') }}
+                    </span>
+                </div>
+                <h4 class="fw-bold">{{ _('Administrative Control Center') }}</h4>
+                <p class="text-muted mx-auto" style="max-width: 600px;">
+                    {{ _('This dashboard aggregates real-time data from') }} <strong>{{ _('Collector Reports') }}</strong> {{ _('and') }} <strong>{{ _('Resident Rewards') }}</strong>{{ _('. Verified entries automatically update the volume and sustainability metrics.') }}
+                </p>
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <a href="{{ url_for('main.waste_volume') }}" class="btn btn-primary rounded-pill px-4 shadow-sm">{{ _('Detailed Analytics') }}</a>
+                    <button onclick="window.location.reload()" class="btn btn-outline-secondary rounded-pill px-4">{{ _('Refresh Data') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Soft backgrounds for icons */
+    .bg-soft-primary { background-color: rgba(13, 110, 253, 0.1); }
+    .bg-soft-success { background-color: rgba(25, 135, 84, 0.1); }
+    .bg-soft-warning { background-color: rgba(255, 193, 7, 0.1); }
+    
+    /* Hover effects for cards */
+    .transition-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+        border: 1px solid transparent;
+    }
+    
+    .transition-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.08) !important;
+        border: 1px solid rgba(13, 110, 253, 0.1) !important;
+    }
+
+    /* Clean typography for stats */
+    h2.fw-bold {
+        letter-spacing: -0.5px;
+    }
+</style>
+{% endblock %}

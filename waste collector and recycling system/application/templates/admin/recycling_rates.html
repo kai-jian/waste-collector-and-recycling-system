@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('main.dashboard_summary') }}" class="text-decoration-none">Dashboard</a></li>
+            <li class="breadcrumb-item active">Recycling Analysis</li>
+        </ol>
+    </nav>
+
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h2 class="fw-bold text-dark"><i class="bi bi-recycle text-success me-2"></i>Recycling Analysis</h2>
+            <p class="text-muted">Tracking verified diversion from the Resident Reward System.</p>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 p-3 text-center border-top border-success border-4">
+                <h6 class="text-muted small text-uppercase fw-bold">Verified Recyclables</h6>
+                <h2 class="fw-bold text-success mb-0">{{ "{:,.1f}".format(weight|default(0)) }} <span class="fs-6 fw-normal">kg</span></h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 p-3 text-center border-top border-primary border-4">
+                <h6 class="text-muted small text-uppercase fw-bold">Active Recyclers</h6>
+                <h2 class="fw-bold text-primary mb-0">{{ count|default(0) }}</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 p-3 text-center border-top border-warning border-4">
+                <h6 class="text-muted small text-uppercase fw-bold">Points Issued</h6>
+                <h2 class="fw-bold text-warning mb-0">{{ "{:,}".format(points|default(0)) }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-header bg-dark text-white p-3 border-0">
+                    <h5 class="mb-0 fw-bold small text-uppercase">Top Sustainability Heroes</h5>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="list-group list-group-flush">
+                        {% for hero in heroes %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                            <div class="d-flex align-items-center">
+                                <span class="badge bg-light text-dark rounded-circle me-3">{{ loop.index }}</span>
+                                <div>
+                                    <strong>{{ hero.username }}</strong>
+                                    <br><small class="text-muted">{{ "{:,.1f}".format(hero.total_w) }} kg</small>
+                                </div>
+                            </div>
+                            <span class="badge bg-success rounded-pill">+{{ hero.total_p }} pts</span>
+                        </li>
+                        {% else %}
+                        <li class="list-group-item text-center text-muted p-4">No hero data available yet.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-header bg-white p-3 border-0">
+                    <h5 class="mb-0 fw-bold text-dark">Recent Verified Contributions</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light text-muted small text-uppercase">
+                            <tr>
+                                <th class="ps-4">Date Approved</th>
+                                <th>Resident</th>
+                                <th>Waste Type</th>
+                                <th>Weight</th>
+                                <th class="pe-4 text-end">Points Earned</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for req in contributions %}
+                            <tr>
+                                <td class="ps-4 small text-muted">
+                                    {# Using date_posted or date_submitted based on your model #}
+                                    {{ req.date_submitted.strftime('%Y-%m-%d') if req.date_submitted else 'N/A' }}
+                                </td>
+                                <td><strong>{{ req.resident.username }}</strong></td>
+                                <td>
+                                    {# Updated to use waste_type and match your lowercase DB strings #}
+                                    <span class="badge rounded-pill px-3 
+                                        {% if req.waste_type == 'recyclable' %}bg-soft-success text-success
+                                        {% else %}bg-soft-secondary text-secondary{% endif %}">
+                                        {{ req.waste_type|capitalize }}
+                                    </span>
+                                </td>
+                                <td>{{ req.weight }} kg</td>
+                                <td class="pe-4 text-end text-success fw-bold">+{{ req.points_earned }}</td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="5" class="text-center p-5 text-muted">No verified contributions found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-soft-success { background-color: rgba(25, 135, 84, 0.1); }
+    .bg-soft-secondary { background-color: rgba(108, 117, 125, 0.1); }
+</style>
+{% endblock %}

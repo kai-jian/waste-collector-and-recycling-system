@@ -1,0 +1,40 @@
+    {% extends "layout.html" %}
+    {% block content %}
+    <div class="container mt-4">
+        <h2 class="fw-bold mb-4">{{ _('Pending Assignments') }}</h2>
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>{{ _('ID') }}</th>
+                            <th>{{ _('Type') }}</th>
+                            <th>{{ _('Status') }}</th>
+                            <th>{{ _('Date Reported') }}</th>
+                            <th class="text-end">{{ _('Action') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for comp in complaints %}
+                        <tr>
+                            <td>#{{ comp.id }}</td>
+                            <td><strong>{{ comp.type }}</strong></td>
+                            <td>
+                                <span class="badge {% if comp.status == 'Pending' %}bg-warning{% else %}bg-success{% endif %}">
+                                    {{ comp.status }}
+                                </span>
+                            </td>
+                            <td>{{ comp.date_posted.strftime('%Y-%m-%d') }}</td>
+                            <td class="text-end">
+                                <a href="{{ url_for('main.manage_complaint', id=comp.id) }}" class="btn btn-primary btn-sm rounded-pill px-3">
+                                    {{ _('Manage & Assign') }}
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

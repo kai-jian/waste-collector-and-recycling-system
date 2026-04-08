@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h2 class="fw-bold text-dark">{{ _('Helpline Management Hub') }}</h2>
+            <p class="text-muted">{{ _('Control all support channels, contact information, and resident resources.') }}</p>
+        </div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100 rounded-4 text-center p-4">
+                <div class="bg-light rounded-circle p-3 d-inline-block mb-3 mx-auto">
+                    <i class="bi bi-telephone text-success fs-3"></i>
+                </div>
+                <h5 class="fw-bold">{{ _('Hotline') }}</h5>
+                <p class="small text-muted">{{ _('Update the emergency contact number.') }}</p>
+                <a href="{{ url_for('main.edit_helpline', key='hotline') }}" class="btn btn-outline-success btn-sm rounded-pill mt-auto">{{ _('Edit Hotline') }}</a>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100 rounded-4 text-center p-4">
+                <div class="bg-light rounded-circle p-3 d-inline-block mb-3 mx-auto">
+                    <i class="bi bi-envelope text-success fs-3"></i>
+                </div>
+                <h5 class="fw-bold">{{ _('Email') }}</h5>
+                <p class="small text-muted">{{ _('Set the official support address.') }}</p>
+                <a href="{{ url_for('main.edit_helpline', key='email') }}" class="btn btn-outline-success btn-sm rounded-pill mt-auto">{{ _('Edit Email') }}</a>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100 rounded-4 text-center p-4">
+                <div class="bg-light rounded-circle p-3 d-inline-block mb-3 mx-auto">
+                    <i class="bi bi-chat-dots text-success fs-3"></i>
+                </div>
+                <h5 class="fw-bold">{{ _('Live Chat') }}</h5>
+                <p class="small text-muted">{{ _('Manage active chat channels.') }}</p>
+                <a href="{{ url_for('main.manage_chat') }}" class="btn btn-outline-success btn-sm rounded-pill mt-auto">{{ _('Manage Chat') }}</a>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100 rounded-4 text-center p-4">
+                <div class="bg-light rounded-circle p-3 d-inline-block mb-3 mx-auto">
+                    <i class="bi bi-question-circle text-success fs-3"></i>
+                </div>
+                <h5 class="fw-bold">{{ _('FAQs') }}</h5>
+                <p class="small text-muted">{{ _('Manage common questions.') }}</p>
+                <a href="{{ url_for('main.manage_faq') }}" class="btn btn-outline-success btn-sm rounded-pill mt-auto">{{ _('Manage FAQ') }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

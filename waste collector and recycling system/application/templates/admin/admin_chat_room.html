@@ -1,0 +1,210 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-light border-0 py-3">
+                    <h5 class="fw-bold mb-0">
+                        <i class="bi bi-people-fill me-2"></i>Residents
+                    </h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush">
+                        {% if residents %}
+                            {% for resident in residents %}
+                            <a href="{{ url_for('main.admin_chat_room', channel_id=channel.id, resident_id=resident.id) }}" 
+                               class="list-group-item list-group-item-action p-3 border-bottom {% if selected_resident and selected_resident.id == resident.id %}active{% endif %}">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ url_for('static', filename='profile_pics/' + resident.image_file) }}" 
+                                             alt="{{ resident.username }}" class="rounded-circle me-3" width="40" height="40">
+                                        <div>
+                                            <p class="mb-0 fw-bold small">{{ resident.username }}</p>
+                                            <small class="text-muted">Messaged here</small>
+                                        </div>
+                                    </div>
+                                    {% if unread_counts.get(resident.id, 0) > 0 %}
+                                    <span class="badge bg-danger rounded-pill">{{ unread_counts[resident.id] }}</span>
+                                    {% endif %}
+                                </div>
+                            </a>
+                            {% endfor %}
+                        {% else %}
+                        <div class="p-3 text-center text-muted">
+                            <small>No residents have messaged yet</small>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-header bg-white border-0 py-3 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <a href="{{ url_for('main.manage_chat') }}" class="text-muted me-3">
+                            <i class="bi bi-chevron-left fs-4"></i>
+                        </a>
+                        <div>
+                            <h5 class="fw-bold mb-0">
+                                {{ channel.name }}
+                                {% if selected_resident %}
+                                    <small class="text-muted ms-2">→ {{ selected_resident.username }}</small>
+                                {% endif %}
+                            </h5>
+                            <small class="text-muted">{% if selected_resident %}Individual Conversation{% else %}All Conversations{% endif %}</small>
+                        </div>
+                    </div>
+                    <span class="badge bg-info text-white">Admin View</span>
+                </div>
+
+                <div class="card-body bg-light overflow-auto" style="height: 500px; display: flex; flex-direction: column;">
+                    <div class="chat-container flex-grow-1 d-flex flex-column justify-content-end">
+                        
+                        <!-- Welcome Message -->
+                        {% if not messages %}
+                        <div class="text-center text-muted my-5">
+                            <i class="bi bi-chat-left-text display-4"></i>
+                            <p class="mt-3">No messages in this channel yet.</p>
+                            <small>Residents will appear here when they start messaging.</small>
+                        </div>
+                        {% else %}
+                        <!-- Display all messages -->
+                        {% for msg in messages %}
+                            {% if msg.is_admin %}
+                            <!-- Admin's message (right aligned) -->
+                            <div class="d-flex mb-4 justify-content-end">
+                                <div class="bg-primary text-white p-3 rounded-4 shadow-sm" style="max-width: 75%; border-bottom-right-radius: 0 !important;">
+                                    <p class="mb-1"><small><strong>You</strong></small></p>
+                                    <p class="mb-1">{{ msg.content }}</p>
+                                    <small class="opacity-75" style="font-size: 0.7rem;">{{ msg.date_posted.strftime('%I:%M %p') }}</small>
+                                </div>
+                            </div>
+                            {% else %}
+                            <!-- Resident's message (left aligned) -->
+                            <div class="d-flex mb-4">
+                                <div class="bg-white p-3 rounded-4 shadow-sm" style="max-width: 75%; border-bottom-left-radius: 0 !important;">
+                                    <p class="mb-1"><strong>{{ msg.sender.username }}</strong></p>
+                                    <p class="mb-1">{{ msg.content }}</p>
+                                    <small class="text-muted" style="font-size: 0.7rem;">{{ msg.date_posted.strftime('%I:%M %p') }}</small>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                <div class="card-footer bg-white border-0 p-3">
+                    {% if selected_resident %}
+                    <!-- Show message form only when a resident is selected -->
+                    <div class="d-flex gap-2">
+                        <input type="text" id="messageInput" class="form-control border-0 bg-light rounded-pill px-4" placeholder="Type your response..." required>
+                        <button id="sendBtn" class="btn bg-primary text-white rounded-circle">
+                            <i class="bi bi-send-fill"></i>
+                        </button>
+                    </div>
+                    {% else %}
+                    <!-- Show hint when in overview mode -->
+                    <div class="text-center text-muted p-3">
+                        <small><i class="bi bi-info-circle me-2"></i>Select a resident from the list to send a message</small>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-success-custom { background-color: #2ecc71 !important; }
+    .card-body::-webkit-scrollbar { width: 5px; }
+    .card-body::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
+</style>
+
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+<script>
+    const socket = io();
+    const channelId = {{ channel.id }};
+    const residentId = {{ selected_resident.id if selected_resident else 'null' }};
+    const currentUserId = {{ current_user.id }};
+    const messageInput = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const chatContainer = document.querySelector('.chat-container');
+
+    // Function to scroll to bottom of messages
+    function scrollToBottom() {
+        if (chatContainer && chatContainer.parentElement) {
+            setTimeout(function() {
+                chatContainer.parentElement.scrollTop = chatContainer.parentElement.scrollHeight;
+            }, 0);
+        }
+    }
+    
+    // Scroll to bottom when page loads
+    window.addEventListener('load', scrollToBottom);
+
+    // Join the chat room
+    socket.emit('join_chat', { channel_id: channelId });
+
+    // Listen for new messages
+    socket.on('new_message', function(data) {
+        // Only display if we're viewing the correct resident or if message is from selected resident
+        if (residentId === null || (residentId === data.sender_id) || (data.is_admin && data.recipient_id === residentId)) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = data.is_admin ? 'd-flex mb-4 justify-content-end' : 'd-flex mb-4';
+            
+            if (data.is_admin) {
+                messageDiv.innerHTML = `
+                    <div class="bg-primary text-white p-3 rounded-4 shadow-sm" style="max-width: 75%; border-bottom-right-radius: 0 !important;">
+                        <p class="mb-1"><small><strong>You</strong></small></p>
+                        <p class="mb-1">${data.content}</p>
+                        <small class="opacity-75" style="font-size: 0.7rem;">${new Date(data.timestamp).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}</small>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="bg-white p-3 rounded-4 shadow-sm" style="max-width: 75%; border-bottom-left-radius: 0 !important;">
+                        <p class="mb-1"><strong>${data.sender_username}</strong></p>
+                        <p class="mb-1">${data.content}</p>
+                        <small class="text-muted" style="font-size: 0.7rem;">${new Date(data.timestamp).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}</small>
+                    </div>
+                `;
+            }
+            
+            chatContainer.appendChild(messageDiv);
+            scrollToBottom();
+        }
+    });
+
+    // Send message on button click
+    sendBtn.addEventListener('click', function() {
+        const message = messageInput.value;
+        if (message.trim()) {
+            socket.emit('send_message', {
+                channel_id: channelId,
+                content: message,
+                is_admin: true,
+                recipient_id: residentId
+            });
+            messageInput.value = '';
+            messageInput.focus();
+        }
+    });
+
+    // Send message on Enter key
+    messageInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendBtn.click();
+        }
+    });
+
+    // Handle disconnect
+    socket.on('disconnect', function() {
+        console.log('Disconnected from chat server');
+    });
+</script>
+{% endblock %}

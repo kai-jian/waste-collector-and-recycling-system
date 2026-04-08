@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="display-5">{{ _('My Mail') }}</h1>
+            <p class="lead text-muted">{{ _('View all your notifications and messages') }}</p>
+        </div>
+        <div class="col-md-4">
+            {% if unread_count > 0 %}
+                <div class="alert alert-info alert-sm mb-0">
+                    <i class="bi bi-envelope-open me-2"></i>
+                    <strong>{{ unread_count }}</strong> {{ _('unread message(s)') }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if mail %}
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="list-group list-group-flush">
+                {% for item_info in mail %}
+                    {% set item = item_info.mail %}
+                    <div class="list-group-item border-0 {% if not item.is_read %}bg-light{% endif %}">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-grow-1">
+                                <div class="d-flex align-items-center mb-2">
+                                    {% if not item.is_read %}
+                                        <i class="bi bi-envelope-open text-primary me-2"></i>
+                                    {% else %}
+                                        <i class="bi bi-envelope-open-fill text-muted me-2"></i>
+                                    {% endif %}
+                                    <h5 class="mb-0 fw-bold">{{ item.subject }}</h5>
+                                    {% if not item.is_read %}
+                                        <span class="badge bg-primary ms-2">{{ _('New') }}</span>
+                                    {% endif %}
+                                </div>
+                                <p class="mb-2 text-muted">
+                                    {% if item.mail_type == 'redemption' %}
+                                        <i class="bi bi-gift me-1"></i><span class="badge bg-success">{{ _('Redemption') }}</span>
+                                    {% elif item.mail_type == 'chat_reply' %}
+                                        <i class="bi bi-chat-dots me-1"></i><span class="badge bg-info">{{ _('Chat Reply') }}</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">{{ item.mail_type | capitalize }}</span>
+                                    {% endif %}
+                                </p>
+                                <p class="mb-3">{{ item.content }}</p>
+                                <small class="text-muted">
+                                    <i class="bi bi-clock me-1"></i>
+                                    {{ item.date_created.strftime('%B %d, %Y at %I:%M %p') }}
+                                </small>
+                            </div>
+                            <div class="ms-3 d-flex flex-column gap-2">
+                                {% if item.mail_type == 'chat_reply' and item.channel_id %}
+                                    {% if is_admin and item_info.sender_id %}
+                                        <form method="POST" action="{{ url_for('main.delete_mail', mail_id=item.id, next=url_for('main.admin_chat_room', channel_id=item.channel_id, resident_id=item_info.sender_id)) }}" style="display: inline;">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="btn btn-sm btn-info" title="{{ _('Go to conversation') }}">
+                                                <i class="bi bi-reply-all me-1"></i>{{ _('Reply') }}
+                                            </button>
+                                        </form>
+                                    {% else %}
+                                        <form method="POST" action="{{ url_for('main.delete_mail', mail_id=item.id, next=url_for('main.chat_room', channel_id=item.channel_id)) }}" style="display: inline;">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="btn btn-sm btn-info" title="{{ _('Go to conversation') }}">
+                                                <i class="bi bi-reply-all me-1"></i>{{ _('Reply') }}
+                                            </button>
+                                        </form>
+                                    {% endif %}
+                                {% endif %}
+                                {% if not item.is_read %}
+                                    <form method="POST" action="{{ url_for('main.mark_mail_read', mail_id=item.id) }}" style="display:inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-sm btn-outline-primary" title="{{ _('Mark as read') }}">
+                                            <i class="bi bi-check-lg"></i>
+                                        </button>
+                                    </form>
+                                {% endif %}
+                                <form method="POST" action="{{ url_for('main.delete_mail', mail_id=item.id) }}" style="display:inline;">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="{{ _('Delete') }}">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% if not loop.last %}
+                        <hr class="my-0">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="card shadow-sm border-0 p-5 text-center">
+            <i class="bi bi-inbox display-4 text-muted mb-3"></i>
+            <h4 class="text-muted">{{ _('No mail yet') }}</h4>
+            <p class="text-muted small">{{ _('You will receive notifications here when you redeem rewards or receive chat replies.') }}</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}
